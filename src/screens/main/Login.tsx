@@ -98,13 +98,14 @@ const Login: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
 
   const login = (email: any, pass: any) => {
     console.log('email: ' + email + ' password: ' + pass)
-    if (email === '' || pass === '') {
-      alert('Please enter valid credentials')
-    } else {
+    navigation.navigate('Onboarding')
+    //if (email === '' || pass === '') {
+    //  alert('Please enter valid credentials')
+    //} else {
       //perform graphql login query to Perseid System
       //then forward to Intro.tsx
       //navigation.navigate('App')
-    }
+    //}
   }
 
   const hasNoIdentityAndNotLoading = !loading && data && data.viewer === null
@@ -158,7 +159,6 @@ const Login: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
               style={styles.inputText}
               placeholder="Enter Account ID"
               //onChangeText={text => handleEmail({ email: text })}
-              ref="emailval"
             />
           </View>
 
