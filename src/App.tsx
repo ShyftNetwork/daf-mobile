@@ -7,6 +7,7 @@ import { core, Message } from './lib/setup'
 import { wcEventHub } from './providers/WalletConnect'
 import { Toast, OverlaySign } from '@kancha/kancha-ui'
 import IDSwitcher from './navigators/components/Switcher'
+import Debug from 'debug'
 
 import './lib/I18n'
 

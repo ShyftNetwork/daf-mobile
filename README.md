@@ -32,6 +32,14 @@ $ yarn
 $ cd ios && bundle exec pod install
 ```
 
+### Setup specific for Android. Assuming that you jave Android SDK setup already
+
+Create a local.properties in the android directory and add the line below. You may have to specify full path
+
+sdk.dir = ~/Library/Android/sdk
+
+Must also start the virtual device. NOTE: When you run the command `react-native run-android` it will start the local server so don't bother running the 'yarn start'. It will fail to run because port 8081 will be taken
+
 ### Quick - Non Contributors (iOS)
 
 You can safely install pods directly without bundler. You will need to have cocopods installed globally on your machine.
@@ -82,3 +90,7 @@ $ ENVFILE=.env.production react-native run-android
 ## Sentry
 
 Sentry is set up. Add the correct configs to .env
+
+### Developer Notes
+
+In order to change the app name in app.json from 'DafMobile' to something else, manual changed in the app registry of Android and iOS. Normally this will be changed during react native create app command.

@@ -21,6 +21,7 @@ import { Message } from 'daf-core'
 const CreateFirstCredential: React.FC<NavigationStackScreenProps> & {
   navigationOptions: any
 } = ({ navigation }) => {
+  //debug('CreateFirstCredential')
   const did = navigation.getParam('did')
   const fetchMessages = navigation.getParam('fetchMessages')
   const [name, setName] = useState()

@@ -25,7 +25,7 @@
     "max-classes-per-file": [true, 5],
     "max-line-length": [true, 180],
     "member-access": [true, "no-public"],
-    "no-console": true,
+    "no-console": false,
     "no-empty-interface": false,
     "no-implicit-dependencies": false,
     "no-invalid-this": [true, "check-function-in-method"],

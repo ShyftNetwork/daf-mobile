@@ -53,6 +53,7 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ navigate }) => {
           })
         }
         if (payload.method === 'issue_credential_callback') {
+          debug('components Wallet Connect issue credential callback')
           const requestType = AppConstants.requests.CREDENTIAL
           navigate(Screens.Requests.screen, {
             requestType,

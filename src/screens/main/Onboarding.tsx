@@ -32,8 +32,9 @@ const Onboarding: React.FC<OnboardingProps> = ({ navigation }) => {
         </Container> */}
         <Container marginTop={30}>
           <Text type={Constants.TextTypes.Body} textAlign={'center'}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Welcome to Perseid's Accounting System. This digital wallet
+            interfaces with the accounting system as well as hold native crypto
+            currency
           </Text>
         </Container>
         <Container w={300} marginTop={30}>

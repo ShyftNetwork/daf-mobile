@@ -7,10 +7,12 @@ import { useQuery } from 'react-apollo'
 import { GET_VIEWER } from '../../lib/graphql/queries'
 
 const App = () => {
+  console.log('NavigationEvents: ' + GET_VIEWER)
   const { data } = useQuery(GET_VIEWER)
 
   useEffect(() => {
     core.on(Daf.EventTypes.validatedMessage, async (message: Daf.Message) => {
+      console.log('NavigationEvents: ' + Daf.Message)
       if (
         (data && data.viewer && data.viewer.did && message.type === 'sdr',
         data.viewer.did !== message.sender)
@@ -25,5 +27,4 @@ const App = () => {
 
   return <></>
 }
-
 export default App

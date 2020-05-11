@@ -29,7 +29,8 @@ export const WalletConnectProvider = (props: any) => {
   const [peerId, updatePeerId] = useState<string | null>()
 
   useEffect(() => {
-    debug('Initialising wallet connect')
+    debug('WalletConnect useEffect - Initialising wallet connect')
+    //console.log('WalletConnect useEffect - Initialising wallet connect')
     walletConnectInit()
   }, [])
 

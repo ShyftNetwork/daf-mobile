@@ -27,6 +27,8 @@ import Profile from '../screens/main/Profile'
 import Onboarding from '../screens/main/Onboarding'
 import Restore from '../screens/main/Restore'
 import Intro from '../screens/main/Intro'
+import PerseidLogin from '../screens/main/PerseidLogin'
+import Login from '../screens/main/Login'
 
 import Scanner from '../screens/main/Scanner'
 import MessageProcess from '../screens/main/MessageProcess'
@@ -383,9 +385,28 @@ const Onboard = createStackNavigator(
         headerStyle: { borderBottomWidth: 0 },
       },
     },
+    PerseidLogin: {
+      screen: PerseidLogin,
+      navigationOptions: {
+        headerLeft: null,
+        headerTitle: headerLogo,
+        headerStyle: { borderBottomWidth: 0 },
+      },
+    },
+    Login: {
+      screen: Login,
+      navigationOptions: {
+        headerLeft: null,
+        headerTitle: headerLogo,
+        headerStyle: { borderBottomWidth: 0 },
+      },
+    },
   },
+
   {
-    initialRouteName: 'Intro',
+    //initialRouteName: 'Intro',
+    //initialRouteName: 'PerseidLogin'
+    initialRouteName: 'Login',
   },
 )
 

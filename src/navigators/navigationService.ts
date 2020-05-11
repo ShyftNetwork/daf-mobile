@@ -4,9 +4,12 @@ let _navigator: any
 
 function setTopLevelNavigator(navigatorRef: any) {
   _navigator = navigatorRef
+  console.log('navigationService: ' + _navigator)
 }
 
 function navigate(routeName: any, params: any) {
+  console.log('routeName: ' + routeName)
+
   _navigator.dispatch(
     NavigationActions.navigate({
       routeName,

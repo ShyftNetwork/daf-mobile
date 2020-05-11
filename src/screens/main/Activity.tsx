@@ -39,7 +39,7 @@ const Activity: React.FC<Props> = ({ navigation }) => {
   const identitiesResponse = useQuery(GET_ALL_IDENTITIES)
   const [getMessages, { loading, data, error }] = useLazyQuery(VIEWER_MESSAGES)
 
-  console.log(error)
+  //console.log(error)
 
   const fetchMessages = () => {
     if (viewerResponse && viewerResponse.data && viewerResponse.data.viewer) {
@@ -192,7 +192,7 @@ const Activity: React.FC<Props> = ({ navigation }) => {
                       <Text type={Constants.TextTypes.Body}>
                         It looks like you are new here? You can start by issuing
                         yourself a<Text bold> name </Text>
-                        credential!
+                        credential for the Bermuda Government
                       </Text>
                     </Container>
                     <Button
