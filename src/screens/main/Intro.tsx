@@ -61,11 +61,11 @@ const Intro: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
         <Container testID={'ONBOARDING_WELCOME_TOP'}>
           <Container padding alignItems={'center'} marginTop={50}>
             <Text type={Constants.TextTypes.H2} bold>
-              Welcome to Daf
+              Welcome to PersEID
             </Text>
             <Container marginTop={4}>
               <Text type={Constants.TextTypes.Body}>
-                Building trust so you can grow
+                Structured trust you can depend on
               </Text>
             </Container>
           </Container>

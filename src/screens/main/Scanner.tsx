@@ -39,6 +39,7 @@ export default (props: any) => {
         save: false,
       },
     })
+
     const { type, credentials } = decodedMessage.data.handleMessage
     switch (type) {
       case 'w3c.vc':

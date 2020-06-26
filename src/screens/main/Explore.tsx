@@ -67,7 +67,7 @@ const Explore: React.FC<Props> & {
       ) : (
         <Container padding>
           <Text type={Constants.TextTypes.H3} bold>
-            Explore web of trust
+            Explore web of trusted counterparties
           </Text>
           <Container marginBottom>
             <Container marginTop>
