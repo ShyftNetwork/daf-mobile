@@ -21,6 +21,8 @@ import Explore from '../screens/main/Explore'
 import ViewerProfile from '../screens/main/ViewerProfile'
 import Profile from '../screens/main/Profile'
 import Onboarding from '../screens/main/Onboarding'
+import CreateProfile from '../screens/main/CreateProfile'
+import ReviewProfile from '../screens/main/ReviewProfile'
 import Restore from '../screens/main/Restore'
 import Intro from '../screens/main/Intro'
 import PerseidLogin from '../screens/main/PerseidLogin'
@@ -320,6 +322,12 @@ const Onboard = createStackNavigator(
     },
     Onboarding: {
       screen: Onboarding,
+    },
+    CreateProfile: {
+      screen: CreateProfile,
+    },
+    ReviewProfile: {
+      screen: ReviewProfile,
     },
     Restore: {
       screen: Restore,
