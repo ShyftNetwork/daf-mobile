@@ -49,6 +49,9 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
   return (
     <Screen background={'primary'}>
       <ScrollView>
+        <Container margin>
+          <Text textStyle={styles.title}> Create Profile </Text>
+        </Container>
         <Container paddingHorizontal marginTop>
           <Text type={Constants.TextTypes.Body}>First name</Text>
         </Container>
@@ -197,5 +200,11 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
     </Screen>
   )
 }
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+})
 
 export default CreateProfile

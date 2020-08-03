@@ -29,7 +29,7 @@ const ReviewProfile: React.FC<NavigationStackScreenProps> = ({
 
   const handleSubmit = async () => {
     navigation.navigate('TakeAPicture')
-    return await AsyncStorage.setItem('selectedDid', profile)
+    return await AsyncStorage.setItem('profile', JSON.stringify(profile))
   }
   return (
     <Screen background={'primary'}>
