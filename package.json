@@ -67,7 +67,7 @@
     "i18next": "^17.2.0",
     "jest-junit": "^6.3.0",
     "lodash.merge": "^4.6.2",
-    "moment": "^2.24.0",
+    "moment": "^2.27.0",
     "nacl-did": "^1.0.0",
     "process": "^0.11.0",
     "pubsub-js": "^1.7.0",

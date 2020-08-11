@@ -1,56 +1,43 @@
 import React, { useState } from 'react'
-import {
-  StyleSheet,
-  TextInput,
-  ScrollView,
-  Picker,
-  View,
-  ActivityIndicator,
-} from 'react-native'
+import { StyleSheet, TextInput, ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'
 import { NavigationStackProp } from 'react-navigation-stack'
 import DatePicker from 'react-native-date-picker'
-import navigationService from 'Serto/src/navigators/navigationService'
-import ReviewProfile from './ReviewProfile'
 import RNPickerSelect from 'react-native-picker-select'
+import CountryList from './CountryList'
 
 type Props = {
   navigation: NavigationStackProp
 }
 
-const CreateProfile: React.FC<Props> = ({ navigation }) => {
-  let options = { year: 'numeric', month: 'long', day: 'numeric' }
+const WorkPermit: React.FC<Props> = ({ navigation }) => {
   const [firstName, setFirstName] = useState()
   const [middleName, setMiddleName] = useState()
   const [lastName, setLastName] = useState()
   const [dateOfBirth, setDateOfBirth] = useState(new Date())
-  const [address, setAddress] = useState()
-  const [parish, setParish] = useState()
-  const [country, setCountry] = useState()
-  const [postalCode, setPostalCode] = useState()
-  const [email, setEmail] = useState()
-  const [healthInsuranceNumber, setHealthInsuranceNumber] = useState()
+  const [dateOfExpiry, setDateOfExpiry] = useState(new Date())
+  const [nationality, setNationality] = useState()
+  const [employer, setEmployer] = useState()
+  const [permitNumber, setPermitNumber] = useState()
 
   const createProfile = () => {
-    navigation.navigate('ReviewProfile', {
+    navigation.navigate('HealthInsurance', {
       firstName,
       lastName,
       middleName,
       dateOfBirth,
-      address,
-      parish,
-      country,
-      postalCode,
-      email,
-      healthInsuranceNumber,
+      dateOfExpiry,
+      nationality,
+      employer,
+      permitNumber,
     })
   }
   return (
     <Screen background={'primary'}>
       <ScrollView>
         <Container margin>
-          <Text textStyle={styles.title}> Create Profile </Text>
+          <Text textStyle={styles.title}> Add Work Permit </Text>
         </Container>
         <Container paddingHorizontal marginTop>
           <Text type={Constants.TextTypes.Body}>First name</Text>
@@ -103,83 +90,46 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Address</Text>
+          <Text type={Constants.TextTypes.Body}>Date Of Expiry</Text>
         </Container>
-        <Container background={'secondary'} padding margin br={5}>
-          <TextInput
-            value={address}
-            onChangeText={setAddress}
-            placeholder={'Address'}
-            autoCorrect={false}
-            autoCapitalize={'none'}
-            autoCompleteType={'off'}
+        <Container paddingLeft={15} br={5}>
+          <DatePicker
+            date={dateOfExpiry}
+            onDateChange={setDateOfExpiry}
+            mode={'date'}
+            locale={'en'}
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Parish</Text>
+          <Text type={Constants.TextTypes.Body}>Nationality</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <RNPickerSelect
-            onValueChange={itemValue => setParish(itemValue)}
-            items={[
-              { label: 'Hamilton Parish', value: 'HamiltonParish' },
-              { label: 'Paget Parish', value: 'PagetParish' },
-              { label: 'Sandys Parish', value: 'SandysParish' },
-              { label: 'Smith`s Parish', value: 'SmithsParish' },
-              { label: 'Southampton Parish', value: 'SouthamptonParish' },
-              { label: 'St. David`s Island', value: 'StDavidsIsland' },
-              { label: 'St. George`s Parish', value: 'StGeorgesParish' },
-              { label: 'Warwick Parish', value: 'WarwickParish' },
-            ]}
+            onValueChange={itemValue => setNationality(itemValue)}
+            items={CountryList}
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Country</Text>
+          <Text type={Constants.TextTypes.Body}>Employer</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
-            value={country}
-            onChangeText={setCountry}
-            placeholder={'Bermuda'}
+            value={employer}
+            onChangeText={setEmployer}
+            placeholder={'Employer'}
             autoCorrect={false}
             autoCapitalize={'none'}
             autoCompleteType={'off'}
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Postal Code</Text>
+          <Text type={Constants.TextTypes.Body}>Permit Number</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
-            value={postalCode}
-            onChangeText={setPostalCode}
-            placeholder={'Name'}
-            autoCorrect={false}
-            autoCapitalize={'none'}
-            autoCompleteType={'off'}
-          />
-        </Container>
-        <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Email</Text>
-        </Container>
-        <Container background={'secondary'} padding margin br={5}>
-          <TextInput
-            value={email}
-            onChangeText={setEmail}
-            placeholder={'name@email.com'}
-            autoCorrect={false}
-            autoCapitalize={'none'}
-            autoCompleteType={'off'}
-          />
-        </Container>
-        <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Health Insurance Number</Text>
-        </Container>
-        <Container background={'secondary'} padding margin br={5}>
-          <TextInput
-            value={healthInsuranceNumber}
-            onChangeText={setHealthInsuranceNumber}
-            placeholder={'Name'}
+            value={permitNumber}
+            onChangeText={setPermitNumber}
+            placeholder={''}
             autoCorrect={false}
             autoCapitalize={'none'}
             autoCompleteType={'off'}
@@ -191,7 +141,7 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
               fullWidth
               block={Constants.ButtonBlocks.Outlined}
               type={Constants.BrandOptions.Primary}
-              buttonText={'Create Profile'}
+              buttonText={'Save and Proceed'}
               onPress={createProfile}
             />
           </Container>
@@ -207,4 +157,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default CreateProfile
+export default WorkPermit
