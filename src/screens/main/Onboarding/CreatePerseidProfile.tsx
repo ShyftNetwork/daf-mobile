@@ -20,7 +20,6 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
   const [country, setCountry] = useState()
   const [postalCode, setPostalCode] = useState()
   const [email, setEmail] = useState()
-  const [healthInsuranceNumber, setHealthInsuranceNumber] = useState()
 
   const createProfile = () => {
     navigation.navigate('ReviewProfile', {
@@ -33,7 +32,6 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
       country,
       postalCode,
       email,
-      healthInsuranceNumber,
     })
   }
   return (
@@ -157,19 +155,6 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
             value={email}
             onChangeText={setEmail}
             placeholder={'name@email.com'}
-            autoCorrect={false}
-            autoCapitalize={'none'}
-            autoCompleteType={'off'}
-          />
-        </Container>
-        <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Health Insurance Number</Text>
-        </Container>
-        <Container background={'secondary'} padding margin br={5}>
-          <TextInput
-            value={healthInsuranceNumber}
-            onChangeText={setHealthInsuranceNumber}
-            placeholder={''}
             autoCorrect={false}
             autoCapitalize={'none'}
             autoCompleteType={'off'}

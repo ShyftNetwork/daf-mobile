@@ -65,6 +65,9 @@ import WorkPermit from '../screens/main/Onboarding/WorkPermit'
 import HealthInsurance from '../screens/main/Onboarding/HealthInsurance'
 import ProofOfEmployment from '../screens/main/Onboarding/ProofOfEmployment'
 import ProfileSuccess from '../screens/main/Onboarding/ProfileSuccess'
+import SetProfilePicture from '../screens/main/Onboarding/SetProfilePicture'
+import PerseidProfile from '../screens/main/PerseidProfile'
+import PerseidDocuments from '../screens/main/PerseidDocuments'
 
 const headerLogo = () => (
   <Image
@@ -337,6 +340,15 @@ const Onboard = createStackNavigator(
     },
     ReviewProfile: {
       screen: ReviewProfile,
+    },
+    SetProfilePicture: {
+      screen: SetProfilePicture,
+    },
+    PerseidProfile: {
+      screen: PerseidProfile,
+    },
+    PerseidDocuments: {
+      screen: PerseidDocuments,
     },
     Passport: {
       screen: Passport,

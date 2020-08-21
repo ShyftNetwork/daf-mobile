@@ -25,12 +25,11 @@ const ReviewProfile: React.FC<NavigationStackScreenProps> = ({
     country: navigation.getParam('country') || '',
     postalCode: navigation.getParam('postalCode') || '',
     email: navigation.getParam('email') || '',
-    healthInsuranceNumber: navigation.getParam('healthInsuranceNumber') || '',
   }
-  // console.log('profile', profile);
 
   const handleSubmit = async () => {
-    navigation.navigate('Passport')
+    console.log('r profile', profile)
+    navigation.navigate('SetProfilePicture', { profile })
     return await AsyncStorage.setItem('profile', JSON.stringify(profile))
   }
   return (
@@ -84,12 +83,6 @@ const ReviewProfile: React.FC<NavigationStackScreenProps> = ({
         </Container>
         <Container margin>
           <Text textStyle={styles.baseText}> Email: {profile.email} </Text>
-        </Container>
-        <Container margin>
-          <Text textStyle={styles.baseText}>
-            {' '}
-            Health Insurance Number: {profile.healthInsuranceNumber}{' '}
-          </Text>
         </Container>
         <Container marginTop background={'primary'} alignItems={'center'}>
           <Container w={300} marginBottom>

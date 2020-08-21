@@ -11,7 +11,7 @@ const ProfileSuccess: React.FC<NavigationStackScreenProps> = ({
   navigation,
 }) => {
   const viewProfile = () => {
-    navigation.navigate('ViewProfile', {})
+    navigation.navigate('SetProfilePicture')
   }
   return (
     <ScrollView>

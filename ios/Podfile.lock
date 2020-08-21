@@ -1,5 +1,5 @@
 PODS:
-  - Analytics (3.8.0)
+  - Analytics (3.9.0)
   - boost-for-react-native (1.63.0)
   - CocoaAsyncSocket (7.6.4)
   - CocoaLibEvent (1.0.0)
@@ -234,23 +234,25 @@ PODS:
     - React-cxxreact (= 0.62.2)
     - React-jsi (= 0.62.2)
   - React-jsinspector (0.62.2)
-  - react-native-camera (3.6.0):
+  - react-native-camera (3.35.0):
     - React
-    - react-native-camera/RCT (= 3.6.0)
-    - react-native-camera/RN (= 3.6.0)
-  - react-native-camera/RCT (3.6.0):
+    - react-native-camera/RCT (= 3.35.0)
+    - react-native-camera/RN (= 3.35.0)
+  - react-native-camera/RCT (3.35.0):
     - React
-  - react-native-camera/RN (3.6.0):
+  - react-native-camera/RN (3.35.0):
     - React
-  - react-native-config (1.2.1):
+  - react-native-config (1.3.3):
+    - react-native-config/App (= 1.3.3)
+  - react-native-config/App (1.3.3):
     - React
-  - react-native-date-picker (3.0.3):
+  - react-native-date-picker (3.1.0):
     - React
   - react-native-randombytes (3.5.3):
     - React
-  - react-native-safe-area-context (3.0.2):
+  - react-native-safe-area-context (3.1.4):
     - React
-  - react-native-sodium (0.3.6):
+  - react-native-sodium (0.3.8):
     - React
   - react-native-sqlite-storage (5.0.0):
     - React
@@ -313,31 +315,43 @@ PODS:
     - React-cxxreact (= 0.62.2)
     - React-jsi (= 0.62.2)
     - ReactCommon/callinvoker (= 0.62.2)
-  - RNAnalytics (1.1.0-beta.2):
-    - Analytics
+  - RNAnalytics (1.2.1):
+    - Analytics (= 3.9.0)
     - React
-  - RNCAsyncStorage (1.8.0):
+  - RNCAsyncStorage (1.11.0):
     - React
   - RNCMaskedView (0.1.10):
     - React
-  - RNGestureHandler (1.4.1):
+  - RNGestureHandler (1.7.0):
     - React
-  - RNLocalize (1.2.1):
+  - RNImageCropPicker (0.32.2):
+    - React-Core
+    - React-RCTImage
+    - RNImageCropPicker/QBImagePickerController (= 0.32.2)
+    - TOCropViewController
+  - RNImageCropPicker/QBImagePickerController (0.32.2):
+    - React-Core
+    - React-RCTImage
+    - TOCropViewController
+  - RNLocalize (1.4.1):
     - React
-  - RNReanimated (1.3.0):
+  - RNReanimated (1.12.0):
     - React
-  - RNScreens (2.0.0-alpha.8):
+  - RNScreens (2.10.1):
     - React
-  - RNSentry (1.0.6):
+  - RNSentry (1.7.1):
     - React
-    - Sentry (~> 4.4.0)
-  - RNSVG (9.12.0):
+    - Sentry (~> 5.2.0)
+  - RNSVG (9.13.6):
     - React
-  - RNVectorIcons (6.6.0):
+  - RNVectorIcons (6.7.0):
     - React
-  - Sentry (4.4.3):
-    - Sentry/Core (= 4.4.3)
-  - Sentry/Core (4.4.3)
+  - Sentry (5.2.0):
+    - Sentry/Core (= 5.2.0)
+  - Sentry/Core (5.2.0)
+  - TOCropViewController (2.5.4)
+  - toolbar-android (0.1.0-rc.2):
+    - React
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -400,12 +414,14 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNLocalize (from `../node_modules/react-native-localize`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
+  - "toolbar-android (from `../node_modules/@react-native-community/toolbar-android`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -423,6 +439,7 @@ SPEC REPOS:
     - FlipperKit
     - OpenSSL-Universal
     - Sentry
+    - TOCropViewController
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -496,6 +513,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/masked-view"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNImageCropPicker:
+    :path: "../node_modules/react-native-image-crop-picker"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
   RNReanimated:
@@ -508,11 +527,13 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
+  toolbar-android:
+    :path: "../node_modules/@react-native-community/toolbar-android"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Analytics: fcf79ebc393a7d77befb8d43ce296353ba9ede3d
+  Analytics: 67cce2129e4b0df5b532bf0c043043f292b32f5f
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
@@ -538,12 +559,12 @@ SPEC CHECKSUMS:
   React-jsi: b6dc94a6a12ff98e8877287a0b7620d365201161
   React-jsiexecutor: 1540d1c01bb493ae3124ed83351b1b6a155db7da
   React-jsinspector: 512e560d0e985d0e8c479a54a4e5c147a9c83493
-  react-native-camera: b6a6a61bcdbd619c19df3df581fcb009131938bf
-  react-native-config: ae9ef3bdbf539f2d14ebaf4ebeba508f766e066a
-  react-native-date-picker: e3793bde600b937ea6bcf66266278a8a0b0cb4d5
+  react-native-camera: d9e7b66e40420dcef111f3265a00f01eea54c52c
+  react-native-config: 9a061347e0136fdb32d43a34d60999297d672361
+  react-native-date-picker: 3c263dd503df4e73b7ae57f3a7f4f7bc86d0be0d
   react-native-randombytes: 3638d24759d67c68f6ccba60c52a7a8a8faa6a23
-  react-native-safe-area-context: b11a34881faac509cad5578726c98161ad4d275c
-  react-native-sodium: c7587732667e1cdb7d0d77c2aa2e98420aad2036
+  react-native-safe-area-context: eb91fe1fb3f7b87d9c30a7f0808407d8569d539d
+  react-native-sodium: 0f1e0a6a4c86c1e40b2b936a95d99e3e27a440dd
   react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55
   React-RCTActionSheet: f41ea8a811aac770e0cc6e0ad6b270c644ea8b7c
   React-RCTAnimation: 49ab98b1c1ff4445148b72a3d61554138565bad0
@@ -555,20 +576,23 @@ SPEC CHECKSUMS:
   React-RCTText: fae545b10cfdb3d247c36c56f61a94cfd6dba41d
   React-RCTVibration: 4356114dbcba4ce66991096e51a66e61eda51256
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
-  RNAnalytics: 67854ebc95a440c6d522babd84cf1968c8629947
-  RNCAsyncStorage: 5d83b49070d41fd72906a116c5e7bdac4ea3a814
+  RNAnalytics: e52853832f8b895caf9700023ee5b997902f3b32
+  RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
-  RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
-  RNLocalize: f42aea3133d91d7fa3ec01284a6895019af1a83f
-  RNReanimated: 6abbbae2e5e72609d85aabd92a982a94566885f1
-  RNScreens: bfa9143ca291bcf3804c932f77b9617ff324704f
-  RNSentry: f1c8e34f9109a94b77e946d0ca50803375c1c19e
-  RNSVG: 75670614bca635d3dd64bc267bc199e539cb4fa9
-  RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
-  Sentry: 14bdd673870e8cf64932b149fad5bbbf39a9b390
+  RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08
+  RNImageCropPicker: f0557a908758c4a3f83978894ec7227651529b45
+  RNLocalize: 49634a6a605dcdeb319e9c42a5c2f1aec508694b
+  RNReanimated: 9c475f9b272232351d94a1a781e8b7580bac1ff4
+  RNScreens: b748efec66e095134c7166ca333b628cd7e6f3e2
+  RNSentry: 2bae4ffee2e66376ef42cb845a494c3bde17bc56
+  RNSVG: 8ba35cbeb385a52fd960fd28db9d7d18b4c2974f
+  RNVectorIcons: 368d6d8b8301224e5ffb6254191f4f8876c2be0d
+  Sentry: 6e04bc3e11bf771ca79140a112de64dcfbc7d8cb
+  TOCropViewController: 2a1ae1242600b1f2d996fd91a5268b2309a33b5c
+  toolbar-android: 85f3ef4d691469f2d304e7dee4bca013aa1ba1ff
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 8b2b2c855d22395c7c4ea4c6aabbd5b1d25f911c
+PODFILE CHECKSUM: 5c7120097e8acf770b3bbea3f2de8c4a6e2e9734
 
 COCOAPODS: 1.9.3

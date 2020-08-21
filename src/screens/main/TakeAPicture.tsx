@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View, TouchableOpacity } from 'react-native'
 import { RNCamera } from 'react-native-camera'
 import { Text } from '@kancha/kancha-ui'
@@ -6,6 +6,7 @@ import {
   NavigationStackProp,
   NavigationStackScreenProps,
 } from 'react-navigation-stack'
+import ImagePicker from 'react-native-image-crop-picker'
 
 const PendingView = () => (
   <View
@@ -21,11 +22,34 @@ const PendingView = () => (
 )
 
 const TakeAPicture: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
-  const takePicture = async function(camera) {
+  const [imagePath, setImagePath] = useState('')
+  const takePicture = async camera => {
     const options = { quality: 0.5, base64: true }
     const data = await camera.takePictureAsync(options)
     //  eslint-disable-next-line
-    console.log(data.uri)
+    console.log('takeAPicture imagePath', data.uri)
+    navigation.navigate('SetProfilePicture', { imagePath: data.uri })
+  }
+
+  const selectFromGallery = async () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image)
+      cropPicture(image)
+    })
+  }
+
+  const cropPicture = async image => {
+    ImagePicker.openCropper({
+      path: 'my-file-path.jpg',
+      width: 300,
+      height: 400,
+    }).then(image => {
+      console.log(image)
+    })
   }
 
   return (
@@ -41,7 +65,7 @@ const TakeAPicture: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           buttonNegative: 'Cancel',
         }}
       >
-        {({ camera, status, recordAudioPermissionStatus }) => {
+        {({ camera, status }) => {
           if (status !== 'READY') return <PendingView />
           return (
             <View
@@ -55,7 +79,13 @@ const TakeAPicture: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
                 onPress={() => takePicture(camera)}
                 style={styles.capture}
               >
-                <Text textStyle={{ fontSize: 14 }}> SNAP </Text>
+                <Text textStyle={{ fontSize: 14 }}> Capture </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => selectFromGallery()}
+                style={styles.capture}
+              >
+                <Text textStyle={{ fontSize: 14 }}> Gallery </Text>
               </TouchableOpacity>
             </View>
           )
