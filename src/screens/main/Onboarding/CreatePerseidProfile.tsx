@@ -5,6 +5,7 @@ import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'
 import { NavigationStackProp } from 'react-navigation-stack'
 import DatePicker from 'react-native-date-picker'
 import RNPickerSelect from 'react-native-picker-select'
+import { emailValidation } from 'Serto/src/utils/validations'
 
 type Props = {
   navigation: NavigationStackProp

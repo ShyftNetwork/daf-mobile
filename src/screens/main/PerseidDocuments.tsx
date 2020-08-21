@@ -1,29 +1,21 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage'
 import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'
 import { View, Image } from 'react-native'
 import {
   NavigationStackProp,
   NavigationStackScreenProps,
 } from 'react-navigation-stack'
-import Moment from 'moment'
 import { ScrollView } from 'react-native-gesture-handler'
 
 const PerseidDocuments: React.FC<NavigationStackScreenProps> = ({
   navigation,
 }) => {
-  let options = { year: 'numeric', month: 'long', day: 'numeric' }
   const defaultUrl =
     'https://www.nicepng.com/png/detail/73-730154_open-default-profile-picture-png.png'
-  const profile = {
-    firstName: navigation.getParam('firstName') || '',
-    middleName: navigation.getParam('middleName') || '',
-    lastName: navigation.getParam('lastName') || '',
-    dateOfBirth:
-      navigation.getParam('dateOfBirth') ||
-      new Date().toLocaleDateString('en-US', options),
-    image: navigation.getParam('imagePath') || defaultUrl,
+  const data = {
+    profile: navigation.getParam('profileData') || '',
+    image: navigation.getParam('image') || defaultUrl,
   }
 
   const handleNavigation = async value => {
@@ -35,13 +27,22 @@ const PerseidDocuments: React.FC<NavigationStackScreenProps> = ({
         <View style={styles.containerBox}>
           <Image
             style={styles.profileImg}
-            source={{ uri: profile.image }}
+            source={{ uri: data.image }}
             resizeMode="contain"
           />
           <View style={styles.profileData}>
-            <Text> First Name: {profile.firstName}</Text>
-            <Text> Middle Name: {profile.middleName}</Text>
-            <Text> Last Name: {profile.lastName} </Text>
+            <Text textStyle={styles.profileValues}>
+              {' '}
+              First Name: {data.profile.firstName}
+            </Text>
+            <Text textStyle={styles.profileValues}>
+              {' '}
+              Middle Name: {data.profile.middleName}
+            </Text>
+            <Text textStyle={styles.profileValues}>
+              {' '}
+              Last Name: {data.profile.lastName}{' '}
+            </Text>
           </View>
         </View>
         <Container marginTop background={'primary'} alignItems={'center'}>
@@ -130,13 +131,17 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignContent: 'space-between',
     flexWrap: 'wrap',
-  },
-  profileData: {
-    flex: 1,
+    flexDirection: 'row',
     padding: 10,
   },
+  profileData: {
+    padding: 10,
+  },
+  profileValues: {
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
   profileImg: {
-    flex: 1,
     width: 100,
     height: 100,
     borderRadius: 180,

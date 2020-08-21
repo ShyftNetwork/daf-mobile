@@ -19,10 +19,10 @@ const PerseidProfile: React.FC<NavigationStackScreenProps> = ({
     profile: navigation.getParam('profileData') || '',
     image: navigation.getParam('image') || defaultUrl,
   }
-  console.log('p profile', data.profile)
   const handleSubmit = async () => {
-    // console.log('p profile', data.profile);
-    navigation.navigate('PerseidDocuments')
+    const profileData = data.profile
+    const image = data.image
+    navigation.navigate('PerseidDocuments', { profileData, image })
   }
   return (
     <ScrollView>

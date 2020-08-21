@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
-import { StyleSheet, TextInput, ScrollView } from 'react-native'
+import { StyleSheet, TextInput, ScrollView, Image, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'
 import { NavigationStackProp } from 'react-navigation-stack'
 import DatePicker from 'react-native-date-picker'
 import CountryList from './CountryList'
 import RNPickerSelect from 'react-native-picker-select'
+import ImagePicker from 'react-native-image-crop-picker'
 
 type Props = {
   navigation: NavigationStackProp
 }
 
 const Passport: React.FC<Props> = ({ navigation }) => {
+  const defaultUrl =
+    'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
+
   const [firstName, setFirstName] = useState()
   const [middleName, setMiddleName] = useState()
   const [lastName, setLastName] = useState()
@@ -20,6 +24,27 @@ const Passport: React.FC<Props> = ({ navigation }) => {
   const [nationality, setNationality] = useState()
   const [birthPlace, setBirthplace] = useState()
   const [passportNumber, setPassportNumber] = useState()
+  const [passportImage, setPassportImage] = useState(defaultUrl)
+
+  const takeProfilePicture = async () => {
+    // navigation.navigate('TakeAPicture');
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      setPassportImage(image.path)
+    })
+  }
+  const selectFromGallery = async () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      setPassportImage(image.path)
+    })
+  }
 
   const createProfile = () => {
     navigation.navigate('DriversLicense', {
@@ -92,7 +117,7 @@ const Passport: React.FC<Props> = ({ navigation }) => {
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
-            date={expiryDate}
+            date={dateOfBirth}
             onDateChange={setDateOfBirth}
             mode={'date'}
             locale={'en'}
@@ -103,7 +128,7 @@ const Passport: React.FC<Props> = ({ navigation }) => {
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
-            date={dateOfBirth}
+            date={expiryDate}
             onDateChange={setExpiryDate}
             mode={'date'}
             locale={'en'}
@@ -132,8 +157,38 @@ const Passport: React.FC<Props> = ({ navigation }) => {
             autoCompleteType={'off'}
           />
         </Container>
+        <Container paddingHorizontal marginTop>
+          <Text type={Constants.TextTypes.Body}>Passport Image</Text>
+        </Container>
+        <View style={styles.profileView}>
+          <Image
+            source={{ uri: passportImage }}
+            style={{ width: 300, height: 300 }}
+            resizeMode="contain"
+          />
+        </View>
+        <View style={styles.viewContainer}>
+          <Container w={155} marginBottom marginLeft marginRight>
+            <Button
+              fullWidth
+              block={Constants.ButtonBlocks.Outlined}
+              type={Constants.BrandOptions.Primary}
+              buttonText={'Take A Picture'}
+              onPress={takeProfilePicture}
+            />
+          </Container>
+          <Container w={200} marginBottom>
+            <Button
+              fullWidth
+              block={Constants.ButtonBlocks.Outlined}
+              type={Constants.BrandOptions.Primary}
+              buttonText={'Choose from Gallery'}
+              onPress={selectFromGallery}
+            />
+          </Container>
+        </View>
         <Container background={'primary'} alignItems={'center'}>
-          <Container w={300} marginBottom>
+          <Container w={370} marginBottom>
             <Button
               fullWidth
               block={Constants.ButtonBlocks.Outlined}
@@ -148,6 +203,18 @@ const Passport: React.FC<Props> = ({ navigation }) => {
   )
 }
 const styles = StyleSheet.create({
+  viewContainer: {
+    display: 'flex',
+    alignContent: 'space-between',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    padding: 10,
+  },
+  profileView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
