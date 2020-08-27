@@ -18,13 +18,11 @@ const SetProfilePicture: React.FC<NavigationStackScreenProps> = ({
     profile: navigation.getParam('profile') || '',
   }
   const takeProfilePicture = async () => {
-    // navigation.navigate('TakeAPicture');
     ImagePicker.openCamera({
       width: 300,
       height: 400,
       cropping: true,
     }).then(image => {
-      console.log('camera', image)
       setImagePath(image.path)
     })
   }
@@ -34,14 +32,12 @@ const SetProfilePicture: React.FC<NavigationStackScreenProps> = ({
       height: 400,
       cropping: true,
     }).then(image => {
-      console.log(image)
       setImagePath(image.path)
     })
   }
   const handleNavigation = async () => {
-    console.log('s profile', data)
     const profileData = data.profile
-    navigation.navigate('PerseidProfile', { profileData, image })
+    navigation.navigate('ProfileSuccess', { profileData, image })
   }
 
   return (

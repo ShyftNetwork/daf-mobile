@@ -23,7 +23,6 @@ import Profile from '../screens/main/Profile'
 import Onboarding from '../screens/main/Onboarding'
 import CreateProfile from '../screens/main/Onboarding/CreatePerseidProfile'
 import ReviewProfile from '../screens/main/Onboarding/ReviewPerseidProfile'
-import TakeAPicture from '../screens/main/TakeAPicture'
 import Restore from '../screens/main/Restore'
 import Intro from '../screens/main/Intro'
 import PerseidLogin from '../screens/main/PerseidLogin'
@@ -373,9 +372,6 @@ const Onboard = createStackNavigator(
     },
     ProfileSuccess: {
       screen: ProfileSuccess,
-    },
-    TakeAPicture: {
-      screen: TakeAPicture,
     },
     Restore: {
       screen: Restore,

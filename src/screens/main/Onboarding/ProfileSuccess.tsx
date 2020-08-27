@@ -10,8 +10,16 @@ import { ScrollView } from 'react-native-gesture-handler'
 const ProfileSuccess: React.FC<NavigationStackScreenProps> = ({
   navigation,
 }) => {
+  const defaultUrl =
+    'https://www.nicepng.com/png/detail/73-730154_open-default-profile-picture-png.png'
+  const data = {
+    profile: navigation.getParam('profileData') || '',
+    image: navigation.getParam('image') || defaultUrl,
+  }
   const viewProfile = () => {
-    navigation.navigate('SetProfilePicture')
+    const profileData = data.profile
+    const image = data.image
+    navigation.navigate('PerseidProfile', { profileData, image })
   }
   return (
     <ScrollView>

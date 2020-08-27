@@ -27,7 +27,6 @@ const Passport: React.FC<Props> = ({ navigation }) => {
   const [passportImage, setPassportImage] = useState(defaultUrl)
 
   const takeProfilePicture = async () => {
-    // navigation.navigate('TakeAPicture');
     ImagePicker.openCamera({
       width: 300,
       height: 400,
