@@ -10364,6 +10364,28 @@ typeorm@^0.2.24:
     yargonaut "^1.1.2"
     yargs "^13.2.1"
 
+"typeorm@git@github.com:typeorm/typeorm.git#d1ed5723bb55d4124be13b21e57d9f729d0bae1a":
+  version "0.3.0-rc.19"
+  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.3.0-rc.19.tgz#19091a41c1893e4775d752f140d7a0e4935778b6"
+  integrity sha512-zzMt71QapyjO//xyOX6DM3QzG0cXA0ptG16/3TAXuEO2CQhZLJ/pC/dw6ochT/xr/1spdWTrJrzSFpU2oQqMSg==
+  dependencies:
+    "@types/zen-observable" "^0.8.0"
+    app-root-path "^3.0.0"
+    buffer "^5.1.0"
+    chalk "^2.4.2"
+    cli-highlight "^2.0.0"
+    debug "^4.1.1"
+    dotenv "^6.2.0"
+    glob "^7.1.2"
+    js-yaml "^3.13.1"
+    mkdirp "^0.5.1"
+    reflect-metadata "^0.1.13"
+    tslib "^1.9.0"
+    xml2js "^0.4.17"
+    yargonaut "^1.1.2"
+    yargs "^13.2.1"
+    zen-observable "^0.8.9"
+
 typescript@^3.9.5:
   version "3.9.7"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
@@ -11068,6 +11090,6 @@ zen-observable-ts@^0.8.21:
     tslib "^1.9.3"
     zen-observable "^0.8.0"
 
-zen-observable@^0.8.0:
+zen-observable@^0.8.0, zen-observable@^0.8.9:
   version "0.8.15"
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.15.tgz#96415c512d8e3ffd920afd3889604e30b9eaac15"

@@ -107,7 +107,7 @@
     "stream-browserify": "^1.0.0",
     "subscriptions-transport-ws": "^0.9.16",
     "supports-color": "^7.1.0",
-    "typeorm": "^0.2.24",
+    "typeorm": "git@github.com:typeorm/typeorm.git#d1ed5723bb55d4124be13b21e57d9f729d0bae1a",
     "uport-did-resolver": "^0.0.7",
     "url": "^0.11.0",
     "url-parse": "^1.4.7",
