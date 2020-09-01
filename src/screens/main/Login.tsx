@@ -142,6 +142,18 @@ const Login: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
     // }
   }
 
+  const newUser = () => {
+    console.log('newUser')
+    navigation.navigate('CreateProfile')
+    // if (email === '' || pass === '') {
+    //   alert('Please enter valid credentials')
+    // } else {
+    //   //perform graphql login query to Perseid System
+    //   //then forward to Intro.tsx
+    //   //navigation.navigate('App')
+    // }
+  }
+
   const hasNoIdentityAndNotLoading =
     !loading && (!data || (data && data.viewer === null))
   // const hasNoIdentityAndNotLoading = true;//!loading && data && data.viewer === null
@@ -167,6 +179,18 @@ const Login: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
                   buttonText={'Login'}
                   //onPress={() => navigation.navigate('Onboarding')}
                   onPress={() => login(state.email, state.password)}
+                />
+              </Container>
+            </Container>
+            <Container alignItems={'center'}>
+              <Container w={300}>
+                <Button
+                  fullWidth
+                  block={Constants.ButtonBlocks.Outlined}
+                  type={Constants.BrandOptions.Primary}
+                  buttonText={'New User'}
+                  //onPress={() => navigation.navigate('Onboarding')}
+                  onPress={() => newUser()}
                 />
               </Container>
             </Container>
