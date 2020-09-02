@@ -21,6 +21,8 @@ import Explore from '../screens/main/Explore'
 import ViewerProfile from '../screens/main/ViewerProfile'
 import Profile from '../screens/main/Profile'
 import Onboarding from '../screens/main/Onboarding'
+import CreateProfile from '../screens/main/Onboarding/CreatePerseidProfile'
+import ReviewProfile from '../screens/main/Onboarding/ReviewPerseidProfile'
 import Restore from '../screens/main/Restore'
 import Intro from '../screens/main/Intro'
 import PerseidLogin from '../screens/main/PerseidLogin'
@@ -54,6 +56,17 @@ import Connections from '../screens/settings/Connections' // *
 import Credentials from '../screens/settings/Credentials' // *
 
 import { Animated, Easing } from 'react-native'
+import Passport from '../screens/main/Onboarding/Passport'
+import DriversLicense from '../screens/main/Onboarding/DriversLicense'
+import UtilityBill from '../screens/main/Onboarding/UtilityBill'
+import MarriageCertificate from '../screens/main/Onboarding/MarriageCertificate'
+import WorkPermit from '../screens/main/Onboarding/WorkPermit'
+import HealthInsurance from '../screens/main/Onboarding/HealthInsurance'
+import ProofOfEmployment from '../screens/main/Onboarding/ProofOfEmployment'
+import ProfileSuccess from '../screens/main/Onboarding/ProfileSuccess'
+import SetProfilePicture from '../screens/main/Onboarding/SetProfilePicture'
+import PerseidProfile from '../screens/main/PerseidProfile'
+import PerseidDocuments from '../screens/main/PerseidDocuments'
 
 const headerLogo = () => (
   <Image
@@ -320,6 +333,45 @@ const Onboard = createStackNavigator(
     },
     Onboarding: {
       screen: Onboarding,
+    },
+    CreateProfile: {
+      screen: CreateProfile,
+    },
+    ReviewProfile: {
+      screen: ReviewProfile,
+    },
+    SetProfilePicture: {
+      screen: SetProfilePicture,
+    },
+    PerseidProfile: {
+      screen: PerseidProfile,
+    },
+    PerseidDocuments: {
+      screen: PerseidDocuments,
+    },
+    Passport: {
+      screen: Passport,
+    },
+    DriversLicense: {
+      screen: DriversLicense,
+    },
+    UtilityBill: {
+      screen: UtilityBill,
+    },
+    MarriageCertificate: {
+      screen: MarriageCertificate,
+    },
+    WorkPermit: {
+      screen: WorkPermit,
+    },
+    HealthInsurance: {
+      screen: HealthInsurance,
+    },
+    ProofOfEmployment: {
+      screen: ProofOfEmployment,
+    },
+    ProfileSuccess: {
+      screen: ProfileSuccess,
     },
     Restore: {
       screen: Restore,
