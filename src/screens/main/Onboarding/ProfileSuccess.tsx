@@ -19,7 +19,7 @@ const ProfileSuccess: React.FC<NavigationStackScreenProps> = ({
   const viewProfile = () => {
     const profileData = data.profile
     const image = data.image
-    navigation.navigate('PerseidProfile', { profileData, image })
+    navigation.navigate('CreatingWallet', { profileData, image })
   }
   return (
     <Screen background={'primary'}>

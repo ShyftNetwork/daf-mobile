@@ -3,7 +3,7 @@ import { StyleSheet, TextInput, ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'
 import { NavigationStackProp } from 'react-navigation-stack'
-import { emailValidation } from 'Serto/src/utils/validations'
+import DatePicker from 'react-native-date-picker'
 
 type Props = {
   navigation: NavigationStackProp
@@ -80,6 +80,14 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
         </Container>
         <Container paddingHorizontal marginTop>
           <Text type={Constants.TextTypes.Body}>Date Of Birth</Text>
+        </Container>
+        <Container paddingLeft={15} br={5}>
+          <DatePicker
+            date={dateOfBirth}
+            onDateChange={setDateOfBirth}
+            mode={'date'}
+            locale={'en'}
+          />
         </Container>
         <Container paddingHorizontal marginTop>
           <Text type={Constants.TextTypes.Body}>Address</Text>

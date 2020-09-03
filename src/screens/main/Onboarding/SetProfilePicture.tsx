@@ -2,6 +2,7 @@ import React, { useState, Component } from 'react'
 import { StyleSheet, View, ScrollView, Image, Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'
+import ImagePicker from 'react-native-image-crop-picker'
 import {
   NavigationStackProp,
   NavigationStackScreenProps,
@@ -15,6 +16,24 @@ const SetProfilePicture: React.FC<NavigationStackScreenProps> = ({
   const [image, setImagePath] = useState(defaultUrl)
   const data = {
     profile: navigation.getParam('profile') || '',
+  }
+  const takeProfilePicture = async () => {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      setImagePath(image.path)
+    })
+  }
+  const selectFromGallery = async () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      setImagePath(image.path)
+    })
   }
   const handleNavigation = async () => {
     const profileData = data.profile
@@ -34,6 +53,28 @@ const SetProfilePicture: React.FC<NavigationStackScreenProps> = ({
             resizeMode="contain"
           />
         </View>
+        <Container background={'primary'} alignItems={'center'}>
+          <Container w={300} marginBottom>
+            <Button
+              fullWidth
+              block={Constants.ButtonBlocks.Outlined}
+              type={Constants.BrandOptions.Primary}
+              buttonText={'Take A Picture'}
+              onPress={takeProfilePicture}
+            />
+          </Container>
+        </Container>
+        <Container background={'primary'} alignItems={'center'}>
+          <Container w={300} marginBottom>
+            <Button
+              fullWidth
+              block={Constants.ButtonBlocks.Outlined}
+              type={Constants.BrandOptions.Primary}
+              buttonText={'Choose from Gallery'}
+              onPress={selectFromGallery}
+            />
+          </Container>
+        </Container>
         <Container background={'primary'} alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button

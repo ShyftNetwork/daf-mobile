@@ -172,8 +172,8 @@ const SettingsNavigator = createStackNavigator(
 )
 
 const ProfileNavigator = createStackNavigator({
-  [Screens.ViewerProfile.screen]: {
-    screen: ViewerProfile,
+  [Screens.PerseidProfile.screen]: {
+    screen: PerseidProfile,
     navigationOptions: {
       title: i18n.t('My Profile'),
     },
@@ -264,7 +264,7 @@ const TabNavigator = createBottomTabNavigator(
         },
       },
     },
-    [Screens.ViewerProfile.screen]: {
+    [Screens.PerseidProfile.screen]: {
       screen: ProfileNavigator,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => {
@@ -316,6 +316,14 @@ const App = createStackNavigator(
     Requests: Requests,
     Scanner: ScannerNavigator,
     IssueFirstCredential,
+    Passport,
+    UtilityBill,
+    DriversLicense,
+    MarriageCertificate,
+    HealthInsurance,
+    ProofOfEmployment,
+    WorkPermit,
+    PerseidDocuments,
     IssueCredential,
     CredentialDetail,
     CredentialView,

@@ -28,8 +28,7 @@ const ReviewProfile: React.FC<NavigationStackScreenProps> = ({
   }
 
   const handleSubmit = async () => {
-    // navigation.navigate('SetProfilePicture', { profile })
-    navigation.navigate('CreatingWallet')
+    navigation.navigate('SetProfilePicture', { profile })
     return await AsyncStorage.setItem('profile', JSON.stringify(profile))
   }
   return (

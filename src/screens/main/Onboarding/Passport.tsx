@@ -6,6 +6,8 @@ import { NavigationStackProp } from 'react-navigation-stack'
 import CountryList from './CountryList'
 import { useMutation } from '@apollo/react-hooks'
 import { SIGN_VC_MUTATION, NEW_MESSAGE } from '../../../lib/graphql/queries'
+import DatePicker from 'react-native-date-picker'
+import TakeAPicture from '../../../navigators/components/TakeAPicture'
 
 type Props = {
   navigation: NavigationStackProp
@@ -15,6 +17,7 @@ const Passport: React.FC<Props> = ({ navigation }) => {
   const defaultUrl =
     'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
   const did = navigation.getParam('did')
+  const fetchMessages = navigation.getParam('fetchMessages')
   const [firstName, setFirstName] = useState()
   const [middleName, setMiddleName] = useState()
   const [lastName, setLastName] = useState()
@@ -23,20 +26,26 @@ const Passport: React.FC<Props> = ({ navigation }) => {
   const [nationality, setNationality] = useState()
   const [birthPlace, setBirthplace] = useState()
   const [passportNumber, setPassportNumber] = useState()
-  const [passportImage, setPassportImage] = useState(defaultUrl)
 
-  const createProfile = () => {
-    navigation.navigate('DriversLicense', {
-      firstName,
-      lastName,
-      middleName,
-      dateOfBirth,
-      passportNumber,
-      expiryDate,
-      nationality,
-      birthPlace,
-    })
+  const obj = {
+    id: did,
+    firstName,
+    lastName,
+    middleName,
+    dateOfBirth,
+    passportNumber,
+    expiryDate,
+    nationality,
+    birthPlace,
   }
+
+  const [handleMessage] = useMutation(NEW_MESSAGE, {
+    onCompleted: () => {
+      fetchMessages()
+      navigation.dismiss()
+    },
+  })
+
   const [actionSignVc] = useMutation(SIGN_VC_MUTATION, {
     onCompleted: async response => {
       if (response && response.signCredentialJwt) {
@@ -51,27 +60,19 @@ const Passport: React.FC<Props> = ({ navigation }) => {
   })
 
   const signVc = () => {
+    console.log('did', did)
     actionSignVc({
       variables: {
         data: {
           issuer: did,
           context: ['https://www.w3.org/2018/credentials/v1'],
           type: ['VerifiableCredential'],
-          credentialSubject: {
-            id: did,
-            firstName,
-            lastName,
-            middleName,
-            dateOfBirth,
-            passportNumber,
-            expiryDate,
-            nationality,
-            birthPlace,
-          },
+          credentialSubject: obj,
         },
       },
     })
   }
+
   return (
     <Screen background={'primary'}>
       <ScrollView>
@@ -123,8 +124,24 @@ const Passport: React.FC<Props> = ({ navigation }) => {
         <Container paddingHorizontal marginTop>
           <Text type={Constants.TextTypes.Body}>Date Of Birth</Text>
         </Container>
+        <Container paddingLeft={15} br={5}>
+          <DatePicker
+            date={dateOfBirth}
+            onDateChange={setDateOfBirth}
+            mode={'date'}
+            locale={'en'}
+          />
+        </Container>
         <Container paddingHorizontal marginTop>
           <Text type={Constants.TextTypes.Body}>Expiry Date</Text>
+        </Container>
+        <Container paddingLeft={15} br={5}>
+          <DatePicker
+            date={expiryDate}
+            onDateChange={setExpiryDate}
+            mode={'date'}
+            locale={'en'}
+          />
         </Container>
         <Container paddingHorizontal marginTop>
           <Text type={Constants.TextTypes.Body}>Birth Place</Text>
@@ -146,20 +163,15 @@ const Passport: React.FC<Props> = ({ navigation }) => {
         <Container paddingHorizontal marginTop>
           <Text type={Constants.TextTypes.Body}>Passport Image</Text>
         </Container>
-        <View style={styles.profileView}>
-          <Image
-            source={{ uri: passportImage }}
-            style={{ width: 300, height: 300 }}
-            resizeMode="contain"
-          />
-        </View>
+        <TakeAPicture defaultImage={defaultUrl} />
+
         <Container background={'primary'} alignItems={'center'}>
           <Container w={370} marginBottom>
             <Button
               fullWidth
               block={Constants.ButtonBlocks.Outlined}
               type={Constants.BrandOptions.Primary}
-              buttonText={'Save and Proceed'}
+              buttonText={'Create Credential'}
               onPress={signVc}
             />
           </Container>

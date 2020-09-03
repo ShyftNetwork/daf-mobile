@@ -2,7 +2,7 @@
  *
  */
 import React, { useState } from 'react'
-import { TextInput, ActivityIndicator } from 'react-native'
+import { TextInput } from 'react-native'
 import {
   Container,
   Text,
@@ -21,7 +21,8 @@ const CreateFirstCredential: React.FC<NavigationStackScreenProps> & {
 } = ({ navigation }) => {
   const did = navigation.getParam('did')
   const fetchMessages = navigation.getParam('fetchMessages')
-  const [name, setName] = useState()
+  const [firstName, setFirstName] = useState()
+  const [lastName, setLastName] = useState()
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
     onCompleted: () => {
@@ -52,7 +53,8 @@ const CreateFirstCredential: React.FC<NavigationStackScreenProps> & {
           type: ['VerifiableCredential'],
           credentialSubject: {
             id: did,
-            name,
+            firstName,
+            lastName,
           },
         },
       },
@@ -78,19 +80,32 @@ const CreateFirstCredential: React.FC<NavigationStackScreenProps> & {
           <Text type={Constants.TextTypes.Body}>
             Let's create your first credential by issuing a{' '}
             <Text textStyle={{ fontStyle: 'italic' }} bold>
-              name
+              legal name
             </Text>
             credential to yourself...
           </Text>
         </Container>
         <Container marginTop marginBottom>
-          <Text type={Constants.TextTypes.Body}>Enter your name</Text>
+          <Text type={Constants.TextTypes.Body}>Legal first name</Text>
         </Container>
         <Container background={'secondary'} padding br={5}>
           <TextInput
-            value={name}
-            onChangeText={setName}
-            placeholder={'Name'}
+            value={firstName}
+            onChangeText={setFirstName}
+            placeholder={'First Name'}
+            autoCorrect={false}
+            autoCapitalize={'none'}
+            autoCompleteType={'off'}
+          />
+        </Container>
+        <Container marginTop marginBottom>
+          <Text type={Constants.TextTypes.Body}>Legal last name</Text>
+        </Container>
+        <Container background={'secondary'} padding br={5}>
+          <TextInput
+            value={lastName}
+            onChangeText={setLastName}
+            placeholder={'Last Name'}
             autoCorrect={false}
             autoCapitalize={'none'}
             autoCompleteType={'off'}
@@ -99,7 +114,7 @@ const CreateFirstCredential: React.FC<NavigationStackScreenProps> & {
         <Container marginTop={50}>
           <Container>
             <Button
-              disabled={!name}
+              disabled={!firstName}
               fullWidth
               block={Constants.ButtonBlocks.Filled}
               type={Constants.BrandOptions.Primary}

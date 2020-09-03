@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { StyleSheet } from 'react-native'
 import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'
 import { View, Image } from 'react-native'
@@ -7,41 +7,69 @@ import {
   NavigationStackScreenProps,
 } from 'react-navigation-stack'
 import { ScrollView } from 'react-native-gesture-handler'
+import { useQuery } from '@apollo/react-hooks'
+import { AppContext } from '../../providers/AppContext'
+import { GET_VIEWER_CREDENTIALS } from '../../lib/graphql/queries'
+
+interface Props extends NavigationStackScreenProps {}
 
 const PerseidDocuments: React.FC<NavigationStackScreenProps> = ({
   navigation,
 }) => {
+  const [selectedIdentity] = useContext(AppContext)
+  const { data, loading } = useQuery(GET_VIEWER_CREDENTIALS, {
+    variables: {
+      selectedIdentity,
+    },
+  })
+
+  const viewer = data && data.viewer
+  const credentials = data && data.credentials
+  const source =
+    viewer && data.viewer.profileImage
+      ? { source: { uri: viewer.profileImage } }
+      : {}
+
+  useEffect(() => {
+    if (viewer) {
+      navigation.setParams({ viewer })
+    }
+  }, [data])
+
   const defaultUrl =
     'https://www.nicepng.com/png/detail/73-730154_open-default-profile-picture-png.png'
-  const data = {
+  const profileData = {
     profile: navigation.getParam('profileData') || '',
     image: navigation.getParam('image') || defaultUrl,
   }
 
   const handleNavigation = async value => {
-    navigation.navigate(value)
+    navigation.navigate(value, {
+      did: selectedIdentity,
+    })
   }
+
   return (
     <ScrollView>
       <Screen background={'primary'}>
         <View style={styles.containerBox}>
           <Image
             style={styles.profileImg}
-            source={{ uri: data.image }}
+            source={{ uri: profileData.image }}
             resizeMode="contain"
           />
           <View style={styles.profileData}>
             <Text textStyle={styles.profileValues}>
               {' '}
-              First Name: {data.profile.firstName}
+              First Name: {profileData.profile.firstName}
             </Text>
             <Text textStyle={styles.profileValues}>
               {' '}
-              Middle Name: {data.profile.middleName}
+              Middle Name: {profileData.profile.middleName}
             </Text>
             <Text textStyle={styles.profileValues}>
               {' '}
-              Last Name: {data.profile.lastName}{' '}
+              Last Name: {profileData.profile.lastName}{' '}
             </Text>
           </View>
         </View>

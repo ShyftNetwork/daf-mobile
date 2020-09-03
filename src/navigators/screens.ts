@@ -10,6 +10,7 @@ const MainScreens = {
   Explore: { screen: 'Explore', title: 'Explore' },
   Settings: { screen: 'Settings', title: 'Settings' },
   CreateProfile: { screen: 'CreateProfile', title: 'Create New Profile' },
+  PerseidProfile: { screen: 'PerseidProfile', title: 'Profile' },
   ViewerProfile: { screen: 'ViewerProfile', title: 'Profile' },
   Profile: { screen: 'Profile', title: 'Profile' },
   Scanner: { screen: 'Scanner', title: 'Scanner' },
