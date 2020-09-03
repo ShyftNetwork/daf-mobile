@@ -2,18 +2,14 @@ import React, { useState } from 'react'
 import { StyleSheet, TextInput, ScrollView, Image, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'
-import { NavigationStackProp } from 'react-navigation-stack'
+import { NavigationStackScreenProps } from 'react-navigation-stack'
 import CountryList from './CountryList'
 import { useMutation } from '@apollo/react-hooks'
 import { SIGN_VC_MUTATION, NEW_MESSAGE } from '../../../lib/graphql/queries'
 import DatePicker from 'react-native-date-picker'
 import TakeAPicture from '../../../navigators/components/TakeAPicture'
 
-type Props = {
-  navigation: NavigationStackProp
-}
-
-const Passport: React.FC<Props> = ({ navigation }) => {
+const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   const defaultUrl =
     'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
   const did = navigation.getParam('did')
@@ -41,8 +37,7 @@ const Passport: React.FC<Props> = ({ navigation }) => {
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
     onCompleted: () => {
-      fetchMessages()
-      navigation.dismiss()
+      navigation.navigate('Activity')
     },
   })
 

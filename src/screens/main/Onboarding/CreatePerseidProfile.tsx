@@ -13,6 +13,7 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
   const [firstName, setFirstName] = useState()
   const [middleName, setMiddleName] = useState()
   const [lastName, setLastName] = useState()
+  const [alias, setAlias] = useState()
   const [dateOfBirth, setDateOfBirth] = useState(new Date())
   const [address, setAddress] = useState()
   const [parish, setParish] = useState()
@@ -25,6 +26,7 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
       firstName,
       lastName,
       middleName,
+      alias,
       dateOfBirth,
       address,
       parish,
@@ -40,7 +42,7 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
           <Text textStyle={styles.title}> Create Profile </Text>
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>First name</Text>
+          <Text type={Constants.TextTypes.Body}>Legal First name</Text>
         </Container>
         <Container background={'secondary'} margin padding br={5}>
           <TextInput
@@ -66,13 +68,26 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Last name</Text>
+          <Text type={Constants.TextTypes.Body}>Legal Last name</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
             value={lastName}
             onChangeText={setLastName}
             placeholder={'Last Name'}
+            autoCorrect={false}
+            autoCapitalize={'none'}
+            autoCompleteType={'off'}
+          />
+        </Container>
+        <Container paddingHorizontal marginTop>
+          <Text type={Constants.TextTypes.Body}>Alias</Text>
+        </Container>
+        <Container background={'secondary'} padding margin br={5}>
+          <TextInput
+            value={lastName}
+            onChangeText={setAlias}
+            placeholder={'Alias'}
             autoCorrect={false}
             autoCapitalize={'none'}
             autoCompleteType={'off'}

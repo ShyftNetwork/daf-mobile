@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'
@@ -15,14 +15,35 @@ const PerseidProfile: React.FC<NavigationStackScreenProps> = ({
 }) => {
   const defaultUrl =
     'https://www.nicepng.com/png/detail/73-730154_open-default-profile-picture-png.png'
-  const data = {
-    profile: navigation.getParam('profileData') || '',
-    image: navigation.getParam('image') || defaultUrl,
+  const defaultObj = {
+    firstName: '',
+    lastName: '',
+    middleName: '',
+    dateOfBirth: new Date(),
+    address: '',
+    country: '',
+    parish: '',
+    email: '',
+    postalCode: '',
   }
+  const [profileData, setProfileData] = useState(defaultObj)
+  const getProfile = async () => {
+    const profileData = await AsyncStorage.getItem('profile')
+    if (profileData) {
+      console.log('profileData', profileData)
+      setProfileData(JSON.parse(profileData))
+    }
+    return () => {
+      console.log('This will be logged on unmount')
+    }
+  }
+  useEffect(() => {
+    getProfile()
+  }, [])
+
   const handleSubmit = async () => {
-    const profileData = data.profile
-    const image = data.image
-    navigation.navigate('PerseidDocuments', { profileData, image })
+    // const image = data.image
+    navigation.navigate('PerseidDocuments', { profileData })
   }
   return (
     <ScrollView>
@@ -30,57 +51,57 @@ const PerseidProfile: React.FC<NavigationStackScreenProps> = ({
         <Container margin>
           <Text textStyle={styles.title}>Profile</Text>
         </Container>
-        <View style={styles.profileView}>
+        {/* <View style={styles.profileView}>
           <Image
             source={{ uri: data.image }}
             style={{ width: 200, height: 200, borderRadius: 180 }}
             resizeMode="contain"
           />
-        </View>
+        </View> */}
         <View>
           <Text textStyle={styles.profileStatus}>Profile Unverified</Text>
         </View>
         <View style={styles.borderbox}>
           <Text textStyle={styles.baseText}>
             {' '}
-            First Name: {data.profile.firstName}
+            First Name: {profileData.firstName}
           </Text>
           <Text textStyle={styles.baseText}>
             {' '}
-            Middle Name: {data.profile.middleName}
+            Middle Name: {profileData.middleName}
           </Text>
           <Text textStyle={styles.baseText}>
             {' '}
-            Last Name: {data.profile.lastName}{' '}
+            Last Name: {profileData.lastName}{' '}
           </Text>
         </View>
         <View style={styles.borderbox}>
           <Text textStyle={styles.baseText}>
             {' '}
             Date Of Birth:{' '}
-            {Moment(data.profile.dateOfBirth).format('DD MMM YYYY')}
+            {Moment(profileData.dateOfBirth).format('DD MMM YYYY')}
           </Text>
         </View>
         <View style={styles.borderbox}>
           <Text textStyle={styles.baseText}>
             {' '}
-            Address: {data.profile.address}{' '}
+            Address: {profileData.address}{' '}
           </Text>
           <Text textStyle={styles.baseText}>
             {' '}
-            Parish: {data.profile.parish}{' '}
+            Parish: {profileData.parish}{' '}
           </Text>
           <Text textStyle={styles.baseText}>
             {' '}
-            Country: {data.profile.country}{' '}
+            Country: {profileData.country}{' '}
           </Text>
           <Text textStyle={styles.baseText}>
             {' '}
-            Postal Code: {data.profile.postalCode}{' '}
+            Postal Code: {profileData.postalCode}{' '}
           </Text>
         </View>
         <View style={styles.borderbox}>
-          <Text textStyle={styles.baseText}> Email: {data.profile.email} </Text>
+          <Text textStyle={styles.baseText}> Email: {profileData.email} </Text>
         </View>
         <Container marginTop background={'primary'} alignItems={'center'}>
           <Container w={300} marginBottom>

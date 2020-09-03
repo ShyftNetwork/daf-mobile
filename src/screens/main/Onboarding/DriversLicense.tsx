@@ -2,17 +2,15 @@ import React, { useState } from 'react'
 import { StyleSheet, TextInput, ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'
-import { NavigationStackProp } from 'react-navigation-stack'
+import { NavigationStackScreenProps } from 'react-navigation-stack'
 import DatePicker from 'react-native-date-picker'
 import { useMutation } from '@apollo/react-hooks'
 import { SIGN_VC_MUTATION, NEW_MESSAGE } from '../../../lib/graphql/queries'
 import TakeAPicture from '../../../navigators/components/TakeAPicture'
 
-interface Props {
-  navigation: NavigationStackProp
-}
-
-const DriversLicense: React.FC<Props> = ({ navigation }) => {
+const DriversLicense: React.FC<NavigationStackScreenProps> = ({
+  navigation,
+}) => {
   const defaultUrl =
     'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
   const did = navigation.getParam('did')
@@ -35,7 +33,7 @@ const DriversLicense: React.FC<Props> = ({ navigation }) => {
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
     onCompleted: () => {
-      navigation.dismiss()
+      navigation.navigate('Activity')
     },
   })
 

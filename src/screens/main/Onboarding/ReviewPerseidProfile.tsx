@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { StyleSheet } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'

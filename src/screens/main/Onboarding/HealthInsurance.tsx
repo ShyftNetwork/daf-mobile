@@ -35,7 +35,7 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
     onCompleted: () => {
-      navigation.dismiss()
+      navigation.navigate('Activity')
     },
   })
 
