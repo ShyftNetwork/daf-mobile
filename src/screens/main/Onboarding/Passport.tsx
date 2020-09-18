@@ -15,6 +15,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   const did = navigation.getParam('did')
   const fetchMessages = navigation.getParam('fetchMessages')
   const [firstName, setFirstName] = useState()
+  const [documentType, setDocumentType] = useState('Passport')
   const [middleName, setMiddleName] = useState()
   const [lastName, setLastName] = useState()
   const [dateOfBirth, setDateOfBirth] = useState(new Date())
@@ -25,6 +26,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
 
   const obj = {
     id: did,
+    documentType,
     firstName,
     lastName,
     middleName,
@@ -55,7 +57,6 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   })
 
   const signVc = () => {
-    console.log('did', did)
     actionSignVc({
       variables: {
         data: {
@@ -73,6 +74,9 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
       <ScrollView>
         <Container margin>
           <Text textStyle={styles.title}> Add Passport Information </Text>
+        </Container>
+        <Container margin>
+          <Text> Document Type: {documentType} </Text>
         </Container>
         <Container paddingHorizontal marginTop>
           <Text type={Constants.TextTypes.Body}>First name</Text>

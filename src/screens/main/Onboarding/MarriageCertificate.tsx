@@ -16,6 +16,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
   const defaultUrl =
     'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
   const did = navigation.getParam('did')
+  const [documentType, setDocumentType] = useState('Marraige Certificate')
   let options = { year: 'numeric', month: 'long', day: 'numeric' }
   const [firstName, setFirstName] = useState()
   const [middleName, setMiddleName] = useState()
@@ -29,6 +30,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
 
   const obj = {
     id: did,
+    documentType,
     firstName,
     lastName,
     middleName,
@@ -76,6 +78,9 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
       <ScrollView>
         <Container margin>
           <Text textStyle={styles.title}> Add Marriage Certificate </Text>
+        </Container>
+        <Container margin>
+          <Text> Document Type: {documentType} </Text>
         </Container>
         <Container paddingHorizontal marginTop>
           <Text type={Constants.TextTypes.Body}>First name</Text>

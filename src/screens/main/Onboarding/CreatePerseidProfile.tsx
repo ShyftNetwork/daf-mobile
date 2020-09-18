@@ -85,7 +85,7 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
-            value={lastName}
+            value={alias}
             onChangeText={setAlias}
             placeholder={'Alias'}
             autoCorrect={false}
