@@ -1,14 +1,16 @@
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'
-import { NavigationStackScreenProps } from 'react-navigation-stack'
+import { NavigationStackProp } from 'react-navigation-stack'
 
-interface OnboardingProps extends NavigationStackScreenProps {}
+type Props = {
+  navigation: NavigationStackProp
+}
 
-const Onboarding: React.FC<OnboardingProps> = ({ navigation }) => {
+const Onboarding: React.FC<Props> = ({ navigation }) => {
   const { t } = useTranslation()
   return (
-    <Screen>
+    <Screen background={'primary'}>
       <Container alignItems={'center'} flex={1} padding>
         <Container marginTop={30}>
           <Text type={Constants.TextTypes.H2} bold>
@@ -30,10 +32,14 @@ const Onboarding: React.FC<OnboardingProps> = ({ navigation }) => {
             onPress={() => navigation.navigate('Restore')}
           />
         </Container> */}
-        <Container marginTop={30}>
+        <Container marginTop={30} marginRight={30} marginLeft={30}>
           <Text type={Constants.TextTypes.Body} textAlign={'center'}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Welcome to PersEID's User Account System. {'\n'} {'\n'}
+          </Text>
+          <Text type={Constants.TextTypes.Body} textAlign={'left'}>
+            This digital wallet interfaces with the account system, allowing you
+            full visibility of your credentials and identity throughout the
+            Bermuda infrastructure.
           </Text>
         </Container>
         <Container w={300} marginTop={30}>
