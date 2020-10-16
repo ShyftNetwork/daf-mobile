@@ -52,6 +52,19 @@ import SendRequest from '../screens/settings/SendRequest'
 import ShareCredential from '../screens/settings/ShareCredential'
 import Connections from '../screens/settings/Connections' // *
 import Credentials from '../screens/settings/Credentials' // *
+import CreateProfile from '../screens/main/Onboarding/CreatePerseidProfile'
+import ReviewProfile from '../screens/main/Onboarding/ReviewPerseidProfile'
+import Passport from '../screens/main/Onboarding/Passport'
+import DriversLicense from '../screens/main/Onboarding/DriversLicense'
+import UtilityBill from '../screens/main/Onboarding/UtilityBill'
+import MarriageCertificate from '../screens/main/Onboarding/MarriageCertificate'
+import WorkPermit from '../screens/main/Onboarding/WorkPermit'
+import HealthInsurance from '../screens/main/Onboarding/HealthInsurance'
+import ProofOfEmployment from '../screens/main/Onboarding/ProofOfEmployment'
+import ProfileSuccess from '../screens/main/Onboarding/ProfileSuccess'
+import SetProfilePicture from '../screens/main/Onboarding/SetProfilePicture'
+import PerseidProfile from '../screens/main/PerseidProfile'
+import PerseidDocuments from '../screens/main/PerseidDocuments'
 
 import { Animated, Easing } from 'react-native'
 
@@ -156,10 +169,66 @@ const SettingsNavigator = createStackNavigator(
 )
 
 const ProfileNavigator = createStackNavigator({
-  [Screens.ViewerProfile.screen]: {
-    screen: ViewerProfile,
+  [Screens.PerseidProfile.screen]: {
+    screen: PerseidProfile, //ViewerProfile
     navigationOptions: {
       title: i18n.t('My Profile'),
+    },
+  },
+  PerseidDocuments: {
+    screen: PerseidDocuments,
+    navigationOptions: {
+      headerTitle: headerLogo,
+      headerStyle: { borderBottomWidth: 0 },
+    },
+  },
+  Passport: {
+    screen: Passport,
+    navigationOptions: {
+      headerTitle: headerLogo,
+      headerStyle: { borderBottomWidth: 0 },
+    },
+  },
+  DriversLicense: {
+    screen: DriversLicense,
+    navigationOptions: {
+      headerTitle: headerLogo,
+      headerStyle: { borderBottomWidth: 0 },
+    },
+  },
+  UtilityBill: {
+    screen: UtilityBill,
+    navigationOptions: {
+      headerTitle: headerLogo,
+      headerStyle: { borderBottomWidth: 0 },
+    },
+  },
+  MarriageCertificate: {
+    screen: MarriageCertificate,
+    navigationOptions: {
+      headerTitle: headerLogo,
+      headerStyle: { borderBottomWidth: 0 },
+    },
+  },
+  WorkPermit: {
+    screen: WorkPermit,
+    navigationOptions: {
+      headerTitle: headerLogo,
+      headerStyle: { borderBottomWidth: 0 },
+    },
+  },
+  HealthInsurance: {
+    screen: HealthInsurance,
+    navigationOptions: {
+      headerTitle: headerLogo,
+      headerStyle: { borderBottomWidth: 0 },
+    },
+  },
+  ProofOfEmployment: {
+    screen: ProofOfEmployment,
+    navigationOptions: {
+      headerTitle: headerLogo,
+      headerStyle: { borderBottomWidth: 0 },
     },
   },
 })
@@ -361,6 +430,34 @@ const Onboard = createStackNavigator(
     },
     Onboarding: {
       screen: Onboarding,
+      navigationOptions: {
+        headerTitle: headerLogo,
+        headerStyle: { borderBottomWidth: 0 },
+      },
+    },
+    CreateProfile: {
+      screen: CreateProfile,
+      navigationOptions: {
+        headerTitle: headerLogo,
+        headerStyle: { borderBottomWidth: 0 },
+      },
+    },
+    ReviewProfile: {
+      screen: ReviewProfile,
+      navigationOptions: {
+        headerTitle: headerLogo,
+        headerStyle: { borderBottomWidth: 0 },
+      },
+    },
+    SetProfilePicture: {
+      screen: SetProfilePicture,
+      navigationOptions: {
+        headerTitle: headerLogo,
+        headerStyle: { borderBottomWidth: 0 },
+      },
+    },
+    ProfileSuccess: {
+      screen: ProfileSuccess,
       navigationOptions: {
         headerTitle: headerLogo,
         headerStyle: { borderBottomWidth: 0 },

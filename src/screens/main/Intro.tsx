@@ -48,7 +48,7 @@ const Intro: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
                   block={Constants.ButtonBlocks.Outlined}
                   type={Constants.BrandOptions.Primary}
                   buttonText={'Get Started'}
-                  onPress={() => navigation.navigate('Onboarding')}
+                  onPress={() => navigation.navigate('CreateProfile')}
                 />
               </Container>
             </Container>
@@ -65,7 +65,7 @@ const Intro: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
         <Container testID={'ONBOARDING_WELCOME_TOP'}>
           <Container padding alignItems={'center'} marginTop={50}>
             <Text type={Constants.TextTypes.H2} bold>
-              Welcome to Daf
+              Welcome to PerseID
             </Text>
             <Container marginTop={4}>
               <Text type={Constants.TextTypes.Body}>

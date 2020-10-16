@@ -3,6 +3,7 @@ const OnboardingScreens = {
   Intro: { screen: 'Intro', title: 'Intro' },
   CreatingWallet: { screen: 'CreatingWallet', title: 'Creating Wallet' },
   Onboarding: { screen: 'Onboarding', title: 'Onboarding' },
+  CreateProfile: { screen: 'CreateProfile', title: 'Create New Profile' },
 }
 
 const MainScreens = {
@@ -10,6 +11,7 @@ const MainScreens = {
   Explore: { screen: 'Explore', title: 'Explore' },
   Settings: { screen: 'Settings', title: 'Settings' },
   ViewerProfile: { screen: 'ViewerProfile', title: 'Profile' },
+  PerseidProfile: { screen: 'PerseidProfile', title: 'My PerseID Profile' },
   Profile: { screen: 'Profile', title: 'Profile' },
   Scanner: { screen: 'Scanner', title: 'Scanner' },
   IssueCredential: { screen: 'IssueCredential', title: 'Issue Credential' },

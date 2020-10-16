@@ -22,6 +22,8 @@ const CreateFirstCredential: React.FC<NavigationStackScreenProps> & {
   const did = navigation.getParam('did')
   const fetchMessages = navigation.getParam('fetchMessages')
   const [name, setName] = useState()
+  const [address, setAddress] = useState()
+  const [country, setCountry] = useState()
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
     onCompleted: () => {
@@ -53,6 +55,8 @@ const CreateFirstCredential: React.FC<NavigationStackScreenProps> & {
           credentialSubject: {
             id: did,
             name,
+            address,
+            country,
           },
         },
       },
@@ -91,6 +95,32 @@ const CreateFirstCredential: React.FC<NavigationStackScreenProps> & {
             value={name}
             onChangeText={setName}
             placeholder={'Name'}
+            autoCorrect={false}
+            autoCapitalize={'none'}
+            autoCompleteType={'off'}
+          />
+        </Container>
+        <Container marginTop marginBottom>
+          <Text type={Constants.TextTypes.Body}>Enter your Address</Text>
+        </Container>
+        <Container background={'secondary'} padding br={5}>
+          <TextInput
+            value={address}
+            onChangeText={setAddress}
+            placeholder={'Address'}
+            autoCorrect={false}
+            autoCapitalize={'none'}
+            autoCompleteType={'off'}
+          />
+        </Container>
+        <Container marginTop marginBottom>
+          <Text type={Constants.TextTypes.Body}>Country</Text>
+        </Container>
+        <Container background={'secondary'} padding br={5}>
+          <TextInput
+            value={country}
+            onChangeText={setCountry}
+            placeholder={'Country'}
             autoCorrect={false}
             autoCapitalize={'none'}
             autoCompleteType={'off'}
