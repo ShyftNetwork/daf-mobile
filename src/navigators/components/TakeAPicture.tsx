@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Container, Button, Constants } from '@kancha/kancha-ui'
-import { StyleSheet, Image, View } from 'react-native'
+import { Container, Button, Constants, Text } from '@kancha/kancha-ui'
+import { StyleSheet, Image, View, AsyncStorage } from 'react-native'
 import ImagePicker from 'react-native-image-crop-picker'
 
 interface TakeAPictureProps {
   defaultImage: string
+  documentType: string
 }
 const TakeAPicture: React.FC<TakeAPictureProps> = ({ defaultImage }) => {
   const [image, setNewImage] = useState(defaultImage)
@@ -13,25 +14,25 @@ const TakeAPicture: React.FC<TakeAPictureProps> = ({ defaultImage }) => {
     ImagePicker.openCamera({
       width: 300,
       height: 400,
-      cropping: true,
+      includeBase64: true,
     }).then(image => {
-      setNewImage(image.path)
+      setNewImage(image)
     })
   }
   const selectFromGallery = async () => {
     ImagePicker.openPicker({
       width: 300,
       height: 400,
-      cropping: true,
+      includeBase64: true,
     }).then(image => {
-      setNewImage(image.path)
+      setNewImage(image)
     })
   }
   return (
     <>
       <View style={styles.profileView}>
         <Image
-          source={{ uri: image }}
+          source={{ uri: `data:${image.mime};base64,${image.data}` }}
           style={{ width: 300, height: 300 }}
           resizeMode="contain"
         />

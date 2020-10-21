@@ -37,6 +37,13 @@ const Activity: React.FC<Props> = ({ navigation }) => {
     },
   })
 
+  const goToPerseidProfile = () => {
+    navigation.navigate('Passport', {
+      did: selectedIdentity,
+      fetchMessages: refetchAllMessages,
+    })
+  }
+
   const showFirstLoadModal = () => {
     navigation.navigate('CreateFirstCredential', {
       did: selectedIdentity,
@@ -71,7 +78,7 @@ const Activity: React.FC<Props> = ({ navigation }) => {
   }
 
   return (
-    <Screen background={'secondary'} safeArea={true}>
+    <Screen background={'primary'} safeArea={true}>
       <Container flex={1}>
         {allMessagesLoading && (
           <Loader width={180} text={'Loading activity...'} />
@@ -140,14 +147,14 @@ const Activity: React.FC<Props> = ({ navigation }) => {
                     <Container marginBottom marginTop={5}>
                       <Text type={Constants.TextTypes.Body}>
                         It looks like you are new here? You can start by issuing
-                        yourself a<Text bold> name </Text>
+                        yourself a<Text bold> passport </Text>
                         credential!
                       </Text>
                     </Container>
                     <Button
                       fullWidth
                       buttonText={'Get started'}
-                      onPress={showFirstLoadModal}
+                      onPress={goToPerseidProfile}
                       type={Constants.BrandOptions.Primary}
                       block={Constants.ButtonBlocks.Outlined}
                     />

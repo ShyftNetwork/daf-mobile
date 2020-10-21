@@ -37,12 +37,15 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
   }
   return (
     <Screen background={'primary'}>
-      <ScrollView>
+      <ScrollView style={styles.background}>
         <Container margin>
-          <Text textStyle={styles.title}> Create Profile </Text>
+          <Text textStyle={styles.title}> Welcome </Text>
+          <Text textStyle={styles.title}> Please create your profile </Text>
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Legal First name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Legal First name
+          </Text>
         </Container>
         <Container background={'secondary'} margin padding br={5}>
           <TextInput
@@ -55,7 +58,9 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Middle name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Middle name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -68,7 +73,9 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Legal Last name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Legal Last name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -81,7 +88,9 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Alias</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Alias
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -94,7 +103,9 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Date Of Birth</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Date Of Birth
+          </Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -102,10 +113,13 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
             onDateChange={setDateOfBirth}
             mode={'date'}
             locale={'en'}
+            style={styles.whiteBackground}
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Address</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Address
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -118,10 +132,14 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Parish</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Parish
+          </Text>
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Country</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Country
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -134,7 +152,9 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Postal Code</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Postal Code
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -147,7 +167,9 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Email</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Email
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -159,7 +181,7 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
             autoCompleteType={'off'}
           />
         </Container>
-        <Container background={'primary'} alignItems={'center'}>
+        <Container style={styles.baseText} alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button
               fullWidth
@@ -175,9 +197,20 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
   )
 }
 const styles = StyleSheet.create({
+  whiteBackground: {
+    backgroundColor: 'white',
+  },
+  background: {
+    backgroundColor: '#042f66',
+  },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#e07b39',
+  },
+  baseText: {
+    color: '#e07b39',
   },
 })
 

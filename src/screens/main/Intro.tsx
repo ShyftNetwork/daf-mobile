@@ -63,15 +63,19 @@ const Intro: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
       )}
       {!selectedIdentity && !loading && (
         <Container testID={'ONBOARDING_WELCOME_TOP'}>
-          <Container padding alignItems={'center'} marginTop={50}>
-            <Text type={Constants.TextTypes.H2} bold>
-              Welcome to PerseID
-            </Text>
-            <Container marginTop={4}>
+          <Container padding alignItems={'center'} marginTop={20}>
+            {/* <Text type={Constants.TextTypes.H2} bold>
+              Welcome to  */}
+            <Image
+              source={require('../../assets/images/daf-black-icon.jpg')}
+              style={{ height: 80, width: 200 }}
+            />
+            {/* </Text> */}
+            {/* <Container marginTop={4}>
               <Text type={Constants.TextTypes.Body}>
                 Building trust so you can grow
               </Text>
-            </Container>
+            </Container> */}
           </Container>
           <Container marginTop={50}>
             <Image

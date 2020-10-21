@@ -46,8 +46,8 @@ const PerseidProfile: React.FC<NavigationStackScreenProps> = ({
     navigation.navigate('PerseidDocuments', { profileData })
   }
   return (
-    <ScrollView>
-      <Screen background={'primary'}>
+    <ScrollView style={styles.background}>
+      <View style={styles.background}>
         <Container margin>
           <Text textStyle={styles.title}>Profile</Text>
         </Container>
@@ -103,7 +103,7 @@ const PerseidProfile: React.FC<NavigationStackScreenProps> = ({
         <View style={styles.borderbox}>
           <Text textStyle={styles.baseText}> Email: {profileData.email} </Text>
         </View>
-        <Container marginTop background={'primary'} alignItems={'center'}>
+        <Container marginTop alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button
               fullWidth
@@ -114,11 +114,15 @@ const PerseidProfile: React.FC<NavigationStackScreenProps> = ({
             />
           </Container>
         </Container>
-      </Screen>
+      </View>
     </ScrollView>
   )
 }
 const styles = StyleSheet.create({
+  background: {
+    backgroundColor: '#042f66',
+    color: 'white',
+  },
   borderbox: {
     borderWidth: 1,
     borderColor: 'grey',
@@ -134,6 +138,7 @@ const styles = StyleSheet.create({
   },
   baseText: {
     fontSize: 18,
+    color: '#e07b39',
   },
   profileView: {
     flex: 1,

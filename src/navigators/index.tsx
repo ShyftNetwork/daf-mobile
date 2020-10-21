@@ -1,6 +1,6 @@
 import React from 'react'
 import i18n from '../lib/I18n'
-import { Image } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
 import {
   createAppContainer,
   NavigationParams,
@@ -69,12 +69,24 @@ import PerseidDocuments from '../screens/main/PerseidDocuments'
 import { Animated, Easing } from 'react-native'
 
 const headerLogo = () => (
-  <Image
-    source={require('../assets/images/daf-black-icon.png')}
-    style={{ height: 41 }}
-    resizeMode={'contain'}
-  />
+  <View style={styles.container}>
+    <Image
+      source={require('../assets/images/daf-black-icon.jpg')}
+      style={styles.logo}
+      resizeMode={'contain'}
+    />
+  </View>
 )
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logo: {
+    width: 300,
+    height: 40,
+  },
+})
 
 const SettingsNavigator = createStackNavigator(
   {
@@ -172,6 +184,7 @@ const ProfileNavigator = createStackNavigator({
   [Screens.PerseidProfile.screen]: {
     screen: PerseidProfile, //ViewerProfile
     navigationOptions: {
+      headerTitle: headerLogo,
       title: i18n.t('My Profile'),
     },
   },
@@ -424,7 +437,7 @@ const Onboard = createStackNavigator(
     Intro: {
       screen: Intro,
       navigationOptions: {
-        headerTitle: headerLogo,
+        // headerTitle: headerLogo,
         headerStyle: { borderBottomWidth: 0 },
       },
     },

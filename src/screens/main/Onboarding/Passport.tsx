@@ -24,6 +24,13 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   const [birthPlace, setBirthplace] = useState()
   const [passportNumber, setPassportNumber] = useState()
 
+  const [handleMessage] = useMutation(NEW_MESSAGE, {
+    onCompleted: () => {
+      fetchMessages()
+      navigation.dismiss()
+    },
+  })
+
   const obj = {
     id: did,
     documentType,
@@ -35,13 +42,14 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
     expiryDate,
     nationality,
     birthPlace,
+    image,
   }
 
-  const [handleMessage] = useMutation(NEW_MESSAGE, {
-    onCompleted: () => {
-      navigation.navigate('Activity')
-    },
-  })
+  // const [handleMessage] = useMutation(NEW_MESSAGE, {
+  //   onCompleted: () => {
+  //     navigation.navigate('Activity')
+  //   },
+  // })
 
   const [actionSignVc] = useMutation(SIGN_VC_MUTATION, {
     onCompleted: async response => {
@@ -162,7 +170,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
         <Container paddingHorizontal marginTop>
           <Text type={Constants.TextTypes.Body}>Passport Image</Text>
         </Container>
-        <TakeAPicture defaultImage={defaultUrl} />
+        <TakeAPicture defaultImage={defaultUrl} documentType="passport" />
 
         <Container background={'primary'} alignItems={'center'}>
           <Container w={370} marginBottom>
