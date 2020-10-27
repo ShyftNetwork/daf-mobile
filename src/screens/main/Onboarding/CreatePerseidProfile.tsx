@@ -4,6 +4,9 @@ import { useTranslation } from 'react-i18next'
 import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'
 import { NavigationStackProp } from 'react-navigation-stack'
 import DatePicker from 'react-native-date-picker'
+import RNPickerSelect from 'react-native-picker-select'
+import CountryList from './CountryList'
+import ParishList from './ParishList'
 
 type Props = {
   navigation: NavigationStackProp
@@ -136,19 +139,23 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
             Parish
           </Text>
         </Container>
+        <Container background={'secondary'} padding margin br={5}>
+          <RNPickerSelect
+            style={styles.whiteBackground}
+            onValueChange={value => setParish(value)}
+            items={ParishList}
+          />
+        </Container>
         <Container paddingHorizontal marginTop>
           <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
             Country
           </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
-          <TextInput
-            value={country}
-            onChangeText={setCountry}
-            placeholder={'Bermuda'}
-            autoCorrect={false}
-            autoCapitalize={'none'}
-            autoCompleteType={'off'}
+          <RNPickerSelect
+            style={styles.whiteBackground}
+            onValueChange={value => setCountry(value)}
+            items={CountryList}
           />
         </Container>
         <Container paddingHorizontal marginTop>
@@ -203,13 +210,13 @@ const styles = StyleSheet.create({
   background: {
     backgroundColor: '#042f66',
   },
+  baseText: {
+    color: '#e07b39',
+  },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#e07b39',
-  },
-  baseText: {
     color: '#e07b39',
   },
 })

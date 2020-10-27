@@ -23,6 +23,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   const [nationality, setNationality] = useState()
   const [birthPlace, setBirthplace] = useState()
   const [passportNumber, setPassportNumber] = useState()
+  const [image, setImage] = useState(defaultUrl)
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
     onCompleted: () => {
@@ -170,7 +171,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
         <Container paddingHorizontal marginTop>
           <Text type={Constants.TextTypes.Body}>Passport Image</Text>
         </Container>
-        <TakeAPicture defaultImage={defaultUrl} documentType="passport" />
+        <TakeAPicture image={setImage} documentType="passport" />
 
         <Container background={'primary'} alignItems={'center'}>
           <Container w={370} marginBottom>

@@ -32,8 +32,8 @@ const ReviewProfile: React.FC<NavigationStackScreenProps> = ({
     return await AsyncStorage.setItem('profile', JSON.stringify(profile))
   }
   return (
-    <ScrollView>
-      <Screen background={'primary'}>
+    <Screen background={'primary'}>
+      <ScrollView style={styles.background}>
         <Container margin>
           <Text textStyle={styles.title}>
             {' '}
@@ -83,7 +83,7 @@ const ReviewProfile: React.FC<NavigationStackScreenProps> = ({
         <Container margin>
           <Text textStyle={styles.baseText}> Email: {profile.email} </Text>
         </Container>
-        <Container marginTop background={'primary'} alignItems={'center'}>
+        <Container marginTop alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button
               fullWidth
@@ -94,17 +94,25 @@ const ReviewProfile: React.FC<NavigationStackScreenProps> = ({
             />
           </Container>
         </Container>
-      </Screen>
-    </ScrollView>
+      </ScrollView>
+    </Screen>
   )
 }
 const styles = StyleSheet.create({
+  whiteBackground: {
+    backgroundColor: 'white',
+  },
+  background: {
+    backgroundColor: '#042f66',
+  },
   baseText: {
     fontSize: 18,
+    color: '#e07b39',
   },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
+    color: '#e07b39',
   },
 })
 

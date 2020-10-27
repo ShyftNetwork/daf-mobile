@@ -23,46 +23,56 @@ const ProfileSuccess: React.FC<NavigationStackScreenProps> = ({
   }
   return (
     <Screen background={'primary'}>
-      <Container alignItems={'center'} flex={1} padding>
-        <Container marginTop={30}>
-          <Text type={Constants.TextTypes.H2} bold>
-            Thank You!
-          </Text>
-        </Container>
-        <Container margin>
-          <Text textStyle={styles.baseText}>
-            {' '}
-            You Have Successfully built your digital ID.{' '}
-          </Text>
-        </Container>
-        <Container margin>
-          <Text textStyle={styles.baseText}>
-            {' '}
-            Let's get started with adding a credential.{' '}
-          </Text>
-        </Container>
-        <Container background={'primary'} alignItems={'center'} marginTop>
-          <Container w={300} marginBottom>
-            <Button
-              fullWidth
-              block={Constants.ButtonBlocks.Outlined}
-              type={Constants.BrandOptions.Primary}
-              buttonText={'View Profile'}
-              onPress={viewProfile}
-            />
+      <ScrollView style={styles.background}>
+        <Container alignItems={'center'} flex={1} padding>
+          <Container marginTop={30}>
+            <Text textStyle={styles.title} type={Constants.TextTypes.H2} bold>
+              Thank You!
+            </Text>
+          </Container>
+          <Container margin>
+            <Text textStyle={styles.baseText}>
+              {' '}
+              You Have Successfully built your digital ID.{' '}
+            </Text>
+          </Container>
+          <Container margin>
+            <Text textStyle={styles.baseText}>
+              {' '}
+              Let's get started with adding a credential.{' '}
+            </Text>
+          </Container>
+          <Container alignItems={'center'} marginTop>
+            <Container w={300} marginBottom>
+              <Button
+                fullWidth
+                block={Constants.ButtonBlocks.Outlined}
+                type={Constants.BrandOptions.Primary}
+                buttonText={'View Profile'}
+                onPress={viewProfile}
+              />
+            </Container>
           </Container>
         </Container>
-      </Container>
+      </ScrollView>
     </Screen>
   )
 }
 const styles = StyleSheet.create({
+  whiteBackground: {
+    backgroundColor: 'white',
+  },
+  background: {
+    backgroundColor: '#042f66',
+  },
   baseText: {
     fontSize: 18,
+    color: '#e07b39',
   },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
+    color: '#e07b39',
   },
 })
 

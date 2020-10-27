@@ -42,7 +42,7 @@ const SetProfilePicture: React.FC<NavigationStackScreenProps> = ({
 
   return (
     <Screen background={'primary'}>
-      <ScrollView>
+      <ScrollView style={styles.background}>
         <Container margin>
           <Text textStyle={styles.title}> Set Profile Picture </Text>
         </Container>
@@ -53,7 +53,7 @@ const SetProfilePicture: React.FC<NavigationStackScreenProps> = ({
             resizeMode="contain"
           />
         </View>
-        <Container background={'primary'} alignItems={'center'}>
+        <Container alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button
               fullWidth
@@ -64,7 +64,7 @@ const SetProfilePicture: React.FC<NavigationStackScreenProps> = ({
             />
           </Container>
         </Container>
-        <Container background={'primary'} alignItems={'center'}>
+        <Container alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button
               fullWidth
@@ -75,7 +75,7 @@ const SetProfilePicture: React.FC<NavigationStackScreenProps> = ({
             />
           </Container>
         </Container>
-        <Container background={'primary'} alignItems={'center'}>
+        <Container alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button
               fullWidth
@@ -91,6 +91,16 @@ const SetProfilePicture: React.FC<NavigationStackScreenProps> = ({
   )
 }
 const styles = StyleSheet.create({
+  whiteBackground: {
+    backgroundColor: 'white',
+  },
+  background: {
+    backgroundColor: '#042f66',
+  },
+  baseText: {
+    fontSize: 18,
+    color: '#e07b39',
+  },
   profileView: {
     flex: 1,
     alignItems: 'center',
@@ -99,6 +109,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: 'bold',
+    color: '#e07b39',
   },
 })
 
