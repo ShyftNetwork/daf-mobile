@@ -7,11 +7,12 @@ import CountryList from './CountryList'
 import { useMutation } from '@apollo/react-hooks'
 import { SIGN_VC_MUTATION, NEW_MESSAGE } from '../../../lib/graphql/queries'
 import DatePicker from 'react-native-date-picker'
+import ImagePicker from 'react-native-image-crop-picker'
 import TakeAPicture from '../../../navigators/components/TakeAPicture'
+import defaultURL from './DefaultImage'
+import ImgToBase64 from 'react-native-image-base64'
 
 const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
-  const defaultUrl =
-    'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
   const did = navigation.getParam('did')
   const fetchMessages = navigation.getParam('fetchMessages')
   const [firstName, setFirstName] = useState()
@@ -23,7 +24,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   const [nationality, setNationality] = useState()
   const [birthPlace, setBirthplace] = useState()
   const [passportNumber, setPassportNumber] = useState()
-  const [image, setImage] = useState(defaultUrl)
+  const [image, setImage] = useState(defaultURL)
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
     onCompleted: () => {
@@ -31,6 +32,26 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
       navigation.dismiss()
     },
   })
+  const takeProfilePicture = async () => {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      includeBase64: true,
+    }).then(image => {
+      ImgToBase64.getBase64String(image.path.toString())
+        .then(image => setImage(image))
+        .catch(err => console.log(err))
+    })
+  }
+  const selectFromGallery = async () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      includeBase64: true,
+    }).then(image => {
+      setImage(image.path)
+    })
+  }
 
   const obj = {
     id: did,
@@ -171,9 +192,32 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
         <Container paddingHorizontal marginTop>
           <Text type={Constants.TextTypes.Body}>Passport Image</Text>
         </Container>
-        <TakeAPicture image={setImage} documentType="passport" />
-
+        <View style={styles.profileView}>
+          <Image
+            source={{ uri: image }}
+            style={{ width: 300, height: 300 }}
+            resizeMode="contain"
+          />
+        </View>
         <Container background={'primary'} alignItems={'center'}>
+          <Container w={370} marginBottom>
+            <Button
+              fullWidth
+              block={Constants.ButtonBlocks.Outlined}
+              type={Constants.BrandOptions.Primary}
+              buttonText={'Take A Picture'}
+              onPress={takeProfilePicture}
+            />
+          </Container>
+          <Container w={370} marginBottom>
+            <Button
+              fullWidth
+              block={Constants.ButtonBlocks.Outlined}
+              type={Constants.BrandOptions.Primary}
+              buttonText={'Choose from Gallery'}
+              onPress={selectFromGallery}
+            />
+          </Container>
           <Container w={370} marginBottom>
             <Button
               fullWidth
