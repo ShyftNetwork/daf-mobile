@@ -35,7 +35,7 @@ const TakeAPicture: React.FC<TakeAPictureProps> = ({
     <>
       <View style={styles.profileView}>
         <Image
-          source={{ uri: `data:${image.mime};base64,${image.data}` }}
+          source={{ uri: image }}
           style={{ width: 300, height: 300 }}
           resizeMode="contain"
         />
