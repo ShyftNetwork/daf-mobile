@@ -4,14 +4,14 @@ import { StyleSheet, Image, View, AsyncStorage } from 'react-native'
 import ImagePicker from 'react-native-image-crop-picker'
 
 interface TakeAPictureProps {
-  setImage: string
+  defaultImage: string
   documentType: string
 }
 const TakeAPicture: React.FC<TakeAPictureProps> = ({
-  setImage,
+  defaultImage,
   documentType,
 }) => {
-  const [image, setNewImage] = useState(setImage)
+  const [image, setNewImage] = useState(defaultImage)
 
   const takeProfilePicture = async () => {
     ImagePicker.openCamera({

@@ -28,7 +28,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
   const [lastName2, setLastName2] = useState()
   const [dateOfMarriage, setDateOfMarraige] = useState(new Date())
   const [country, setCountry] = useState()
-  const [certificateNumber, setCertificateNumber] = useState()
+  const [documentNumber, setDocumentNumber] = useState()
 
   const obj = {
     id: did,
@@ -40,7 +40,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
     lastName2,
     middleName2,
     dateOfMarriage,
-    certificateNumber,
+    documentNumber,
   }
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
@@ -188,8 +188,8 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
-            value={certificateNumber}
-            onChangeText={setCertificateNumber}
+            value={documentNumber}
+            onChangeText={setDocumentNumber}
             placeholder={''}
             autoCorrect={false}
             autoCapitalize={'none'}

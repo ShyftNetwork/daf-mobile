@@ -20,7 +20,7 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
   const [lastName, setLastName] = useState()
   const [dateOfBirth, setDateOfBirth] = useState(new Date())
   const [expiryDate, setExpiryDate] = useState(new Date())
-  const [licenseNumber, setLicenseNumber] = useState()
+  const [documentNumber, setDocumentNumber] = useState()
 
   const obj = {
     id: did,
@@ -30,7 +30,7 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
     middleName,
     dateOfBirth,
     expiryDate,
-    licenseNumber,
+    documentNumber,
   }
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
@@ -141,8 +141,8 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
-            value={licenseNumber}
-            onChangeText={setLicenseNumber}
+            value={documentNumber}
+            onChangeText={setDocumentNumber}
             placeholder={''}
             autoCorrect={false}
             autoCapitalize={'none'}

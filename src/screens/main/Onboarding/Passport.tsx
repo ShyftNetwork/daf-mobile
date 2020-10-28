@@ -24,7 +24,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   const [expiryDate, setExpiryDate] = useState(new Date())
   const [nationality, setNationality] = useState()
   const [birthPlace, setBirthplace] = useState()
-  const [passportNumber, setPassportNumber] = useState()
+  const [documentNumber, setDocumentNumber] = useState()
   const [image, setImage] = useState(defaultUrl)
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
@@ -41,7 +41,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
     lastName,
     middleName,
     dateOfBirth,
-    passportNumber,
+    documentNumber,
     expiryDate,
     nationality,
     birthPlace
@@ -167,7 +167,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
         <Container background={'secondary'} padding margin br={5}>
           <RNPickerSelect
             style={styles.whiteBackground}
-            onValueChange={value => setBirthplace(value)}
+            onValueChange={label => setBirthplace(label)}
             items={CountryList}
           />
         </Container>
@@ -177,8 +177,8 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
 
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
-            value={passportNumber}
-            onChangeText={setPassportNumber}
+            value={documentNumber}
+            onChangeText={setDocumentNumber}
             placeholder={''}
             autoCorrect={false}
             autoCapitalize={'none'}

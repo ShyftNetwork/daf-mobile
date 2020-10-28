@@ -30,7 +30,7 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
   const [country, setCountry] = useState()
   const [postalCode, setPostalCode] = useState()
   const [utilityCompanyName, setUtilityCompanyName] = useState()
-  const [accountNumber, setAccountNumber] = useState()
+  const [documentNumber, setDocumentNumber] = useState()
 
   const obj = {
     id: did,
@@ -45,7 +45,7 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
     country,
     postalCode,
     utilityCompanyName,
-    accountNumber,
+    documentNumber,
   }
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
@@ -222,8 +222,8 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
-            value={accountNumber}
-            onChangeText={setAccountNumber}
+            value={documentNumber}
+            onChangeText={setDocumentNumber}
             placeholder={''}
             autoCorrect={false}
             autoCapitalize={'none'}

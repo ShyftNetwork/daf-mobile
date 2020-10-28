@@ -26,7 +26,7 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
   const [dateOfExpiry, setDateOfExpiry] = useState(new Date())
   const [nationality, setNationality] = useState()
   const [employer, setEmployer] = useState()
-  const [permitNumber, setPermitNumber] = useState()
+  const [documentNumber, setDocumentNumber] = useState()
 
   const obj = {
     id: did,
@@ -38,7 +38,7 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
     dateOfExpiry,
     nationality,
     employer,
-    permitNumber,
+    documentNumber,
   }
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
@@ -172,8 +172,8 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
-            value={permitNumber}
-            onChangeText={setPermitNumber}
+            value={documentNumber}
+            onChangeText={setDocumentNumber}
             placeholder={''}
             autoCorrect={false}
             autoCapitalize={'none'}
@@ -183,7 +183,7 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
         <Container paddingHorizontal marginTop>
           <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Work Permit Image</Text>
         </Container>
-        <TakeAPicture defaultImage={defaultUrl} />
+        <TakeAPicture defaultImage={defaultUrl} documentType={documentType} />
         <Container alignItems={'center'}>
           <Container w={370} marginBottom>
             <Button

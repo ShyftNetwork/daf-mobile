@@ -23,7 +23,7 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
   const [middleName, setMiddleName] = useState()
   const [lastName, setLastName] = useState()
   const [dateOfBirth, setDateOfBirth] = useState(new Date())
-  const [policyNumber, setPolicyNumber] = useState()
+  const [documentNumber, setDocumentNumber] = useState()
 
   const obj = {
     id: did,
@@ -32,7 +32,7 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
     lastName,
     middleName,
     dateOfBirth,
-    policyNumber,
+    documentNumber,
     carrier,
   }
 
@@ -152,8 +152,8 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
-            value={policyNumber}
-            onChangeText={setPolicyNumber}
+            value={documentNumber}
+            onChangeText={setDocumentNumber}
             placeholder={''}
             autoCorrect={false}
             autoCapitalize={'none'}
