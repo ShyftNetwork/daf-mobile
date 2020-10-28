@@ -6,6 +6,7 @@ import { NavigationStackProp } from 'react-navigation-stack'
 import { useMutation } from '@apollo/react-hooks'
 import { SIGN_VC_MUTATION, NEW_MESSAGE } from '../../../lib/graphql/queries'
 import DatePicker from 'react-native-date-picker'
+import RNPickerSelect from 'react-native-picker-select'
 import TakeAPicture from '../../../navigators/components/TakeAPicture'
 
 type Props = {
@@ -70,18 +71,33 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
 
   return (
     <Screen background={'primary'}>
-      <ScrollView>
+      <ScrollView style={styles.background}>
         <Container margin>
           <Text textStyle={styles.title}> Add Health Inusrance </Text>
         </Container>
         <Container margin>
-          <Text> Document Type: {documentType} </Text>
+          <Text textStyle={styles.baseText}> Document Type: {documentType} </Text>
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Carrier</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Carrier</Text>
+        </Container>
+        <Container background={'secondary'} padding margin br={5}>
+          <RNPickerSelect
+            style={styles.whiteBackground}
+            onValueChange={value => setCarrier(value)}
+            items={[
+              { label: 'Argus', value: 'argus' },
+              { label: 'BF&M', value: 'bf&m' },
+              { label: 'Colonial', value: 'colonial' },
+              { label: 'FM', value: 'fm' },
+              { label: 'HIP', value: 'hip' },
+              { label: 'GEHI', value: 'gehi' },
+              { label: 'FutureCare', value: 'futurecare' },
+            ]}
+          />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>First name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>First name</Text>
         </Container>
         <Container background={'secondary'} margin padding br={5}>
           <TextInput
@@ -94,7 +110,7 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Middle name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Middle name</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -107,7 +123,7 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Last name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Last name</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -120,7 +136,7 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Date Of Birth</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Date Of Birth</Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -128,10 +144,11 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
             onDateChange={setDateOfBirth}
             mode={'date'}
             locale={'en'}
+            style={styles.whiteBackground}
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Health Insurance Number</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Health Insurance Number</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -144,11 +161,11 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Health Insurance Image</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Health Insurance Image</Text>
         </Container>
         <TakeAPicture defaultImage={defaultUrl} />
-        <Container background={'primary'} alignItems={'center'}>
-          <Container w={300} marginBottom>
+        <Container alignItems={'center'}>
+          <Container w={370} marginBottom>
             <Button
               fullWidth
               block={Constants.ButtonBlocks.Outlined}
@@ -163,9 +180,19 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
   )
 }
 const styles = StyleSheet.create({
+  whiteBackground: {
+    backgroundColor: 'white',
+  },
+  background: {
+    backgroundColor: '#042f66',
+  },
+  baseText: {
+    color: '#e07b39',
+  },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
+    color: '#e07b39'
   },
 })
 

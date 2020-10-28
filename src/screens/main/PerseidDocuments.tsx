@@ -50,8 +50,8 @@ const PerseidDocuments: React.FC<NavigationStackScreenProps> = ({
   }
 
   return (
-    <ScrollView>
-      <Screen background={'primary'}>
+    <ScrollView style={styles.background}>
+      <Screen>
         <View style={styles.containerBox}>
           <Image
             style={styles.profileImg}
@@ -73,7 +73,7 @@ const PerseidDocuments: React.FC<NavigationStackScreenProps> = ({
             </Text>
           </View>
         </View>
-        <Container marginTop background={'primary'} alignItems={'center'}>
+        <Container marginTop alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button
               fullWidth
@@ -84,7 +84,7 @@ const PerseidDocuments: React.FC<NavigationStackScreenProps> = ({
             />
           </Container>
         </Container>
-        <Container marginTop background={'primary'} alignItems={'center'}>
+        <Container marginTop alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button
               fullWidth
@@ -95,7 +95,7 @@ const PerseidDocuments: React.FC<NavigationStackScreenProps> = ({
             />
           </Container>
         </Container>
-        <Container marginTop background={'primary'} alignItems={'center'}>
+        <Container marginTop alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button
               fullWidth
@@ -106,7 +106,7 @@ const PerseidDocuments: React.FC<NavigationStackScreenProps> = ({
             />
           </Container>
         </Container>
-        <Container marginTop background={'primary'} alignItems={'center'}>
+        <Container marginTop alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button
               fullWidth
@@ -117,7 +117,7 @@ const PerseidDocuments: React.FC<NavigationStackScreenProps> = ({
             />
           </Container>
         </Container>
-        <Container marginTop background={'primary'} alignItems={'center'}>
+        <Container marginTop alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button
               fullWidth
@@ -128,7 +128,7 @@ const PerseidDocuments: React.FC<NavigationStackScreenProps> = ({
             />
           </Container>
         </Container>
-        <Container marginTop background={'primary'} alignItems={'center'}>
+        <Container marginTop alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button
               fullWidth
@@ -139,7 +139,7 @@ const PerseidDocuments: React.FC<NavigationStackScreenProps> = ({
             />
           </Container>
         </Container>
-        <Container marginTop background={'primary'} alignItems={'center'}>
+        <Container marginTop alignItems={'center'}>
           <Container w={300} marginBottom>
             <Button
               fullWidth
@@ -155,6 +155,9 @@ const PerseidDocuments: React.FC<NavigationStackScreenProps> = ({
   )
 }
 const styles = StyleSheet.create({
+  background: {
+    backgroundColor: '#042f66',
+  },
   containerBox: {
     display: 'flex',
     alignContent: 'space-between',
@@ -168,6 +171,7 @@ const styles = StyleSheet.create({
   profileValues: {
     fontSize: 14,
     fontWeight: 'bold',
+    color: '#e07b39'
   },
   profileImg: {
     width: 100,

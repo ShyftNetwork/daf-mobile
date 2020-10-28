@@ -19,7 +19,7 @@ const TakeAPicture: React.FC<TakeAPictureProps> = ({
       height: 400,
       includeBase64: true,
     }).then(image => {
-      setNewImage(image)
+      setNewImage(image.path)
     })
   }
   const selectFromGallery = async () => {
@@ -28,7 +28,7 @@ const TakeAPicture: React.FC<TakeAPictureProps> = ({
       height: 400,
       includeBase64: true,
     }).then(image => {
-      setNewImage(image)
+      setNewImage(image.path)
     })
   }
   return (
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexDirection: 'row',
     padding: 10,
+    marginLeft: 10
   },
   profileView: {
     flex: 1,

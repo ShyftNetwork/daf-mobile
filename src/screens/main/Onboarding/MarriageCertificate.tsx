@@ -7,6 +7,8 @@ import { useMutation } from '@apollo/react-hooks'
 import { SIGN_VC_MUTATION, NEW_MESSAGE } from '../../../lib/graphql/queries'
 import DatePicker from 'react-native-date-picker'
 import TakeAPicture from '../../../navigators/components/TakeAPicture'
+import RNPickerSelect from 'react-native-picker-select'
+import CountryList from './CountryList'
 
 type Props = {
   navigation: NavigationStackProp
@@ -61,7 +63,6 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
   })
 
   const signVc = () => {
-    console.log('did', did)
     actionSignVc({
       variables: {
         data: {
@@ -75,15 +76,15 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
   }
   return (
     <Screen background={'primary'}>
-      <ScrollView>
+      <ScrollView style={styles.background}>
         <Container margin>
           <Text textStyle={styles.title}> Add Marriage Certificate </Text>
         </Container>
         <Container margin>
-          <Text> Document Type: {documentType} </Text>
+          <Text textStyle={styles.baseText}> Document Type: {documentType} </Text>
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>First name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>First name</Text>
         </Container>
         <Container background={'secondary'} margin padding br={5}>
           <TextInput
@@ -96,7 +97,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Middle name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Middle name</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -109,7 +110,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Last name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Last name</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -122,7 +123,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>First name (Spouse)</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>First name (Spouse)</Text>
         </Container>
         <Container background={'secondary'} margin padding br={5}>
           <TextInput
@@ -135,7 +136,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Middle name (Spouse)</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Middle name (Spouse)</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -148,7 +149,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Last name (Spouse)</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Last name (Spouse)</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -161,7 +162,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Date Of Marriage</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Date Of Marriage</Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -169,23 +170,21 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
             onDateChange={setDateOfMarraige}
             mode={'date'}
             locale={'en'}
+            style={styles.whiteBackground}
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Country</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Country</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
-          <TextInput
-            value={country}
-            onChangeText={setCountry}
-            placeholder={'Bermuda'}
-            autoCorrect={false}
-            autoCapitalize={'none'}
-            autoCompleteType={'off'}
+          <RNPickerSelect
+            style={styles.whiteBackground}
+            onValueChange={value => setCountry(value)}
+            items={CountryList}
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Certificate Number</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Certificate Number</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -198,18 +197,18 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
             Marraige Certificate Image
           </Text>
         </Container>
         <TakeAPicture defaultImage={defaultUrl} />
-        <Container background={'primary'} alignItems={'center'}>
-          <Container w={300} marginBottom>
+        <Container alignItems={'center'}>
+          <Container w={370} marginBottom>
             <Button
               fullWidth
               block={Constants.ButtonBlocks.Outlined}
               type={Constants.BrandOptions.Primary}
-              buttonText={'Save and Proceed'}
+              buttonText={'Create Credential'}
               onPress={signVc}
             />
           </Container>
@@ -219,9 +218,19 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
   )
 }
 const styles = StyleSheet.create({
+  whiteBackground: {
+    backgroundColor: 'white',
+  },
+  background: {
+    backgroundColor: '#042f66',
+  },
+  baseText: {
+    color: '#e07b39',
+  },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
+    color: '#e07b39',
   },
 })
 

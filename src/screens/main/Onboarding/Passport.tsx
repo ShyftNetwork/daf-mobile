@@ -9,10 +9,11 @@ import { SIGN_VC_MUTATION, NEW_MESSAGE } from '../../../lib/graphql/queries'
 import DatePicker from 'react-native-date-picker'
 import ImagePicker from 'react-native-image-crop-picker'
 import TakeAPicture from '../../../navigators/components/TakeAPicture'
-import defaultURL from './DefaultImage'
-import ImgToBase64 from 'react-native-image-base64'
+import RNPickerSelect from 'react-native-picker-select'
 
 const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
+  const defaultUrl =
+    'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
   const did = navigation.getParam('did')
   const fetchMessages = navigation.getParam('fetchMessages')
   const [firstName, setFirstName] = useState()
@@ -24,7 +25,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   const [nationality, setNationality] = useState()
   const [birthPlace, setBirthplace] = useState()
   const [passportNumber, setPassportNumber] = useState()
-  const [image, setImage] = useState(defaultURL)
+  const [image, setImage] = useState(defaultUrl)
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
     onCompleted: () => {
@@ -32,26 +33,6 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
       navigation.dismiss()
     },
   })
-  const takeProfilePicture = async () => {
-    ImagePicker.openCamera({
-      width: 300,
-      height: 400,
-      includeBase64: true,
-    }).then(image => {
-      ImgToBase64.getBase64String(image.path.toString())
-        .then(image => setImage(image))
-        .catch(err => console.log(err))
-    })
-  }
-  const selectFromGallery = async () => {
-    ImagePicker.openPicker({
-      width: 300,
-      height: 400,
-      includeBase64: true,
-    }).then(image => {
-      setImage(image.path)
-    })
-  }
 
   const obj = {
     id: did,
@@ -63,8 +44,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
     passportNumber,
     expiryDate,
     nationality,
-    birthPlace,
-    image,
+    birthPlace
   }
 
   // const [handleMessage] = useMutation(NEW_MESSAGE, {
@@ -101,15 +81,15 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
 
   return (
     <Screen background={'primary'}>
-      <ScrollView>
+      <ScrollView style={styles.background}>
         <Container margin>
           <Text textStyle={styles.title}> Add Passport Information </Text>
         </Container>
         <Container margin>
-          <Text> Document Type: {documentType} </Text>
+          <Text textStyle={styles.baseText}> Document Type: {documentType} </Text>
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>First name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>First name</Text>
         </Container>
         <Container background={'secondary'} margin padding br={5}>
           <TextInput
@@ -122,7 +102,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Middle name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Middle name</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -135,7 +115,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Last name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Last name</Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -148,10 +128,17 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Nationality</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Nationality</Text>
+        </Container>
+        <Container background={'secondary'} padding margin br={5}>
+          <RNPickerSelect
+            style={styles.whiteBackground}
+            onValueChange={value => setNationality(value)}
+            items={CountryList}
+          />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Date Of Birth</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Date Of Birth</Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -159,10 +146,11 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
             onDateChange={setDateOfBirth}
             mode={'date'}
             locale={'en'}
+            style={styles.whiteBackground}
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Expiry Date</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Expiry Date</Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -170,13 +158,21 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
             onDateChange={setExpiryDate}
             mode={'date'}
             locale={'en'}
+            style={styles.whiteBackground}
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Birth Place</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Birth Place</Text>
+        </Container>
+        <Container background={'secondary'} padding margin br={5}>
+          <RNPickerSelect
+            style={styles.whiteBackground}
+            onValueChange={value => setBirthplace(value)}
+            items={CountryList}
+          />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Passport Number</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Passport Number</Text>
         </Container>
 
         <Container background={'secondary'} padding margin br={5}>
@@ -190,34 +186,10 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text type={Constants.TextTypes.Body}>Passport Image</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Passport Image</Text>
         </Container>
-        <View style={styles.profileView}>
-          <Image
-            source={{ uri: image }}
-            style={{ width: 300, height: 300 }}
-            resizeMode="contain"
-          />
-        </View>
-        <Container background={'primary'} alignItems={'center'}>
-          <Container w={370} marginBottom>
-            <Button
-              fullWidth
-              block={Constants.ButtonBlocks.Outlined}
-              type={Constants.BrandOptions.Primary}
-              buttonText={'Take A Picture'}
-              onPress={takeProfilePicture}
-            />
-          </Container>
-          <Container w={370} marginBottom>
-            <Button
-              fullWidth
-              block={Constants.ButtonBlocks.Outlined}
-              type={Constants.BrandOptions.Primary}
-              buttonText={'Choose from Gallery'}
-              onPress={selectFromGallery}
-            />
-          </Container>
+        <TakeAPicture defaultImage={defaultUrl} />
+        <Container alignItems={'center'}>
           <Container w={370} marginBottom>
             <Button
               fullWidth
@@ -233,6 +205,15 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   )
 }
 const styles = StyleSheet.create({
+  whiteBackground: {
+    backgroundColor: 'white',
+  },
+  background: {
+    backgroundColor: '#042f66',
+  },
+  baseText: {
+    color: '#e07b39',
+  },
   viewContainer: {
     display: 'flex',
     alignContent: 'space-between',
@@ -248,6 +229,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: 'bold',
+    color: '#e07b39',
   },
 })
 
