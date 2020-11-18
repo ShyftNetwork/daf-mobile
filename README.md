@@ -82,3 +82,9 @@ $ ENVFILE=.env.production react-native run-android
 ## Sentry
 
 Sentry is set up. Add the correct configs to .env
+
+## Commits
+
+use "Commitizen"
+'npm install -g commitizen'
+then follow instructions at http://commitizen.github.io/cz-cli/
