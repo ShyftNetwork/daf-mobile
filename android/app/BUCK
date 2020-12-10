@@ -35,17 +35,17 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.dafmobile",
+    package = "com.perseidmobile",
 )
 
 android_resource(
     name = "res",
-    package = "com.dafmobile",
+    package = "com.perseidmobile",
     res = "src/main/res",
 )
 
 android_binary(
-    name = "app",
+    name = "perseidmobile_app",
     keystore = "//android/keystores:debug",
     manifest = "src/main/AndroidManifest.xml",
     package_type = "debug",

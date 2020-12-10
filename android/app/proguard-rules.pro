@@ -16,4 +16,4 @@
 #   public *;
 #}
 
--keep class com.dafmobile.BuildConfig { *; }
+-keep class com.perseidmobile.BuildConfig { *; }

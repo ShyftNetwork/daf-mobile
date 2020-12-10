@@ -138,11 +138,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.dafmobile"
+        applicationId "com.perseidmobile"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 21
-        versionName "1.33.3"
+        versionName "1.0.0"
         missingDimensionStrategy 'react-native-camera', 'general'
     }
 
