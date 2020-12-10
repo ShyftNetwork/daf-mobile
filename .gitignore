@@ -80,3 +80,4 @@ Serto.app.dSYM.zip
 .env
 
 ios/Pods
+/android/app/release

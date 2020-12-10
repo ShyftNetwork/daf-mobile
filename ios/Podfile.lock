@@ -1,5 +1,5 @@
 PODS:
-  - Analytics (3.6.10)
+  - Analytics (4.0.5)
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - EthCore (1.0.9):
@@ -196,6 +196,8 @@ PODS:
     - React
   - react-native-date-picker (3.2.4):
     - React-Core
+  - react-native-image-base64 (0.1.4):
+    - React
   - react-native-randombytes (3.5.3):
     - React
   - react-native-sodium (0.3.6):
@@ -273,10 +275,10 @@ PODS:
     - UPTEthereumSigner (~> 1.1.5)
   - RNVectorIcons (6.6.0):
     - React
-  - Sentry (4.4.0):
-    - Sentry/Core (= 4.4.0)
-  - Sentry/Core (4.4.0)
-  - TOCropViewController (2.5.4)
+  - Sentry (4.4.3):
+    - Sentry/Core (= 4.4.3)
+  - Sentry/Core (4.4.3)
+  - TOCropViewController (2.5.5)
   - toolbar-android (0.1.0-rc.2):
     - React
   - UPTEthereumSigner (1.1.5):
@@ -304,6 +306,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-camera (from `../node_modules/react-native-camera`)
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
+  - react-native-image-base64 (from `../node_modules/react-native-image-base64`)
   - react-native-randombytes (from `../node_modules/react-native-randombytes`)
   - react-native-sodium (from `../node_modules/react-native-sodium`)
   - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
@@ -335,16 +338,15 @@ DEPENDENCIES:
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - Analytics
     - boost-for-react-native
     - EthCore
     - ISO8601DateFormatter
     - Sentry
+    - TOCropViewController
     - UPTEthereumSigner
     - Valet
-  trunk:
-    - TOCropViewController
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -379,6 +381,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-camera"
   react-native-date-picker:
     :path: "../node_modules/react-native-date-picker"
+  react-native-image-base64:
+    :path: "../node_modules/react-native-image-base64"
   react-native-randombytes:
     :path: "../node_modules/react-native-randombytes"
   react-native-sodium:
@@ -437,7 +441,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Analytics: 63744ad4afa65c3bcdcdb7a94b62515bde5b3900
+  Analytics: 4bcf052c91e1f3339219e83d6a036fb2bd7c218d
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   EthCore: f30384fa193fbb5f1ce1cff1fa4a7f5f93408d01
@@ -457,6 +461,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 574d597112f9ea3d1b717f6fb62aef764c70dd6f
   react-native-camera: b6a6a61bcdbd619c19df3df581fcb009131938bf
   react-native-date-picker: b2f2dd2144c2f7b052ef120bca483ca43fa92a7a
+  react-native-image-base64: 2ff9ac788639c87a91361ab6652cc95e871b1e54
   react-native-randombytes: 3638d24759d67c68f6ccba60c52a7a8a8faa6a23
   react-native-sodium: c7587732667e1cdb7d0d77c2aa2e98420aad2036
   react-native-sqlite-storage: c7d77c26a0b82a304d7158d3515f188665e3ef72
@@ -483,13 +488,13 @@ SPEC CHECKSUMS:
   RNSVG: 75670614bca635d3dd64bc267bc199e539cb4fa9
   RNUportSigner: 6f4968dd61b4e856bc6e93fa216b2a7268561923
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
-  Sentry: 26650184fe71eb7476dfd2737acb5ea6cc64b4b1
-  TOCropViewController: 2a1ae1242600b1f2d996fd91a5268b2309a33b5c
+  Sentry: 14bdd673870e8cf64932b149fad5bbbf39a9b390
+  TOCropViewController: da59f531f8ac8a94ef6d6c0fc34009350f9e8bfe
   toolbar-android: 85f3ef4d691469f2d304e7dee4bca013aa1ba1ff
   UPTEthereumSigner: a14eb8bc74a2094499682f8c374bfd6066ce7440
   Valet: 14463ef24fab8fd5809044ecedb61484b799fdd6
   Yoga: d8c572ddec8d05b7dba08e4e5f1924004a177078
 
-PODFILE CHECKSUM: ee43cfa7c5b944272ffb9e325f33e25851574dd6
+PODFILE CHECKSUM: c547fef204f9f7e073d3568c98b78b5833d2c60d
 
 COCOAPODS: 1.8.4
