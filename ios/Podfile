@@ -3,7 +3,7 @@
 platform :ios, '9.3'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'PerseidWallet' do
+target 'DafMobile' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
   
@@ -40,7 +40,7 @@ target 'PerseidWallet' do
 
   pod 'react-native-image-base64', :path => '../node_modules/react-native-image-base64'
 
-  target 'PerseidWalletTests' do
+  target 'DafMobileTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -48,10 +48,10 @@ target 'PerseidWallet' do
   use_native_modules!
 end
 
-target 'PerseidWallet-tvOS' do
+target 'DafMobile-tvOS' do
   # Pods for RnDiffApp-tvOS
 
-  target 'PerseidWallet-tvOSTests' do
+  target 'DafMobile-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
