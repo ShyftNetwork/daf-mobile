@@ -20,6 +20,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
   const did = navigation.getParam('did')
   const [documentType, setDocumentType] = useState('Marraige Certificate')
   let options = { year: 'numeric', month: 'long', day: 'numeric' }
+  const [assetId, setAssetId] = useState('')
   const [firstName, setFirstName] = useState()
   const [middleName, setMiddleName] = useState()
   const [lastName, setLastName] = useState()
@@ -41,6 +42,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
     middleName2,
     dateOfMarriage,
     documentNumber,
+    assetId,
   }
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
@@ -48,6 +50,10 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
       navigation.dismiss()
     },
   })
+
+  const handleAssetId = (id: string) => {
+    setAssetId(id)
+  }
 
   const [actionSignVc] = useMutation(SIGN_VC_MUTATION, {
     onCompleted: async response => {
@@ -81,10 +87,15 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           <Text textStyle={styles.title}> Add Marriage Certificate </Text>
         </Container>
         <Container margin>
-          <Text textStyle={styles.baseText}> Document Type: {documentType} </Text>
+          <Text textStyle={styles.baseText}>
+            {' '}
+            Document Type: {documentType}{' '}
+          </Text>
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>First name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            First name
+          </Text>
         </Container>
         <Container background={'secondary'} margin padding br={5}>
           <TextInput
@@ -97,7 +108,9 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Middle name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Middle name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -110,7 +123,9 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Last name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Last name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -123,7 +138,9 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>First name (Spouse)</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            First name (Spouse)
+          </Text>
         </Container>
         <Container background={'secondary'} margin padding br={5}>
           <TextInput
@@ -136,7 +153,9 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Middle name (Spouse)</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Middle name (Spouse)
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -149,7 +168,9 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Last name (Spouse)</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Last name (Spouse)
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -162,7 +183,9 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Date Of Marriage</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Date Of Marriage
+          </Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -174,7 +197,9 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Country</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Country
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <RNPickerSelect
@@ -184,7 +209,9 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Certificate Number</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Certificate Number
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -201,7 +228,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
             Marraige Certificate Image
           </Text>
         </Container>
-        <TakeAPicture defaultImage={defaultUrl} />
+        <TakeAPicture defaultImage={defaultUrl} assetID={handleAssetId} />
         <Container alignItems={'center'}>
           <Container w={370} marginBottom>
             <Button
@@ -210,6 +237,7 @@ const MarriageCertificate: React.FC<Props> = ({ navigation }) => {
               type={Constants.BrandOptions.Primary}
               buttonText={'Create Credential'}
               onPress={signVc}
+              disabled={assetId === ''}
             />
           </Container>
         </Container>

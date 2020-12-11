@@ -17,6 +17,7 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
   const defaultUrl =
     'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
   const did = navigation.getParam('did')
+  const [assetId, setAssetId] = useState('')
   const [documentType, setDocumentType] = useState('Health Insurance')
   const [carrier, setCarrier] = useState()
   const [firstName, setFirstName] = useState()
@@ -34,6 +35,7 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
     dateOfBirth,
     documentNumber,
     carrier,
+    assetId,
   }
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
@@ -41,6 +43,10 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
       navigation.navigate('Activity')
     },
   })
+
+  const handleAssetId = (id: string) => {
+    setAssetId(id)
+  }
 
   const [actionSignVc] = useMutation(SIGN_VC_MUTATION, {
     onCompleted: async response => {
@@ -56,7 +62,6 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
   })
 
   const signVc = () => {
-    console.log('did', did)
     actionSignVc({
       variables: {
         data: {
@@ -76,10 +81,15 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
           <Text textStyle={styles.title}> Add Health Inusrance </Text>
         </Container>
         <Container margin>
-          <Text textStyle={styles.baseText}> Document Type: {documentType} </Text>
+          <Text textStyle={styles.baseText}>
+            {' '}
+            Document Type: {documentType}{' '}
+          </Text>
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Carrier</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Carrier
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <RNPickerSelect
@@ -97,7 +107,9 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>First name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            First name
+          </Text>
         </Container>
         <Container background={'secondary'} margin padding br={5}>
           <TextInput
@@ -110,7 +122,9 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Middle name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Middle name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -123,7 +137,9 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Last name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Last name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -136,7 +152,9 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Date Of Birth</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Date Of Birth
+          </Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -148,7 +166,9 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Health Insurance Number</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Health Insurance Number
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -161,9 +181,11 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Health Insurance Image</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Health Insurance Image
+          </Text>
         </Container>
-        <TakeAPicture defaultImage={defaultUrl} />
+        <TakeAPicture defaultImage={defaultUrl} assetID={handleAssetId} />
         <Container alignItems={'center'}>
           <Container w={370} marginBottom>
             <Button
@@ -172,6 +194,7 @@ const HealthInsurance: React.FC<Props> = ({ navigation }) => {
               type={Constants.BrandOptions.Primary}
               buttonText={'Create Credential'}
               onPress={signVc}
+              disabled={assetId === ''}
             />
           </Container>
         </Container>
@@ -192,7 +215,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: 'bold',
-    color: '#e07b39'
+    color: '#e07b39',
   },
 })
 
