@@ -14,6 +14,7 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
   const defaultUrl =
     'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
   const did = navigation.getParam('did')
+  const [assetId, setAssetId] = useState('')
   const [documentType, setDocumentType] = useState('Drivers License')
   const [firstName, setFirstName] = useState()
   const [middleName, setMiddleName] = useState()
@@ -31,6 +32,7 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
     dateOfBirth,
     expiryDate,
     documentNumber,
+    assetId,
   }
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
@@ -38,6 +40,10 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
       navigation.navigate('Activity')
     },
   })
+
+  const handleAssetId = (id: string) => {
+    setAssetId(id)
+  }
 
   const [actionSignVc] = useMutation(SIGN_VC_MUTATION, {
     onCompleted: async response => {
@@ -71,10 +77,15 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
           <Text textStyle={styles.title}> Add Driver's License </Text>
         </Container>
         <Container margin>
-          <Text textStyle={styles.baseText}> Document Type: {documentType} </Text>
+          <Text textStyle={styles.baseText}>
+            {' '}
+            Document Type: {documentType}{' '}
+          </Text>
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>First name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            First name
+          </Text>
         </Container>
         <Container background={'secondary'} margin padding br={5}>
           <TextInput
@@ -87,7 +98,9 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Middle name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Middle name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -100,7 +113,9 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Last name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Last name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -113,7 +128,9 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Date Of Birth</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Date Of Birth
+          </Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -125,7 +142,9 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Expiry Date</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Expiry Date
+          </Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -137,7 +156,9 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>License Number</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            License Number
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -150,9 +171,11 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Driver's License Image</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Driver's License Image
+          </Text>
         </Container>
-        <TakeAPicture defaultImage={defaultUrl} />
+        <TakeAPicture defaultImage={defaultUrl} assetID={handleAssetId} />
         <Container alignItems={'center'}>
           <Container w={370} marginBottom>
             <Button
@@ -161,6 +184,7 @@ const DriversLicense: React.FC<NavigationStackScreenProps> = ({
               type={Constants.BrandOptions.Primary}
               buttonText={'Create Credential'}
               onPress={signVc}
+              disabled={assetId === ''}
             />
           </Container>
         </Container>

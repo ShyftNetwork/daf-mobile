@@ -7,7 +7,6 @@ import CountryList from './CountryList'
 import { useMutation } from '@apollo/react-hooks'
 import { SIGN_VC_MUTATION, NEW_MESSAGE } from '../../../lib/graphql/queries'
 import DatePicker from 'react-native-date-picker'
-import ImagePicker from 'react-native-image-crop-picker'
 import TakeAPicture from '../../../navigators/components/TakeAPicture'
 import RNPickerSelect from 'react-native-picker-select'
 
@@ -15,6 +14,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   const defaultUrl =
     'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
   const did = navigation.getParam('did')
+  const [assetId, setAssetId] = useState('')
   const fetchMessages = navigation.getParam('fetchMessages')
   const [firstName, setFirstName] = useState()
   const [documentType, setDocumentType] = useState('Passport')
@@ -25,7 +25,6 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   const [nationality, setNationality] = useState()
   const [birthPlace, setBirthplace] = useState()
   const [documentNumber, setDocumentNumber] = useState()
-  const [image, setImage] = useState(defaultUrl)
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
     onCompleted: () => {
@@ -44,7 +43,8 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
     documentNumber,
     expiryDate,
     nationality,
-    birthPlace
+    birthPlace,
+    assetId,
   }
 
   // const [handleMessage] = useMutation(NEW_MESSAGE, {
@@ -65,7 +65,9 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
       }
     },
   })
-
+  const handleAssetId = (id: string) => {
+    setAssetId(id)
+  }
   const signVc = () => {
     actionSignVc({
       variables: {
@@ -86,10 +88,15 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           <Text textStyle={styles.title}> Add Passport Information </Text>
         </Container>
         <Container margin>
-          <Text textStyle={styles.baseText}> Document Type: {documentType} </Text>
+          <Text textStyle={styles.baseText}>
+            {' '}
+            Document Type: {documentType}{' '}
+          </Text>
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>First name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            First name
+          </Text>
         </Container>
         <Container background={'secondary'} margin padding br={5}>
           <TextInput
@@ -102,7 +109,9 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Middle name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Middle name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -115,7 +124,9 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Last name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Last name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -128,7 +139,9 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Nationality</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Nationality
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <RNPickerSelect
@@ -138,7 +151,9 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Date Of Birth</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Date Of Birth
+          </Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -150,7 +165,9 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Expiry Date</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Expiry Date
+          </Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -162,7 +179,9 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Birth Place</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Birth Place
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <RNPickerSelect
@@ -172,7 +191,9 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Passport Number</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Passport Number
+          </Text>
         </Container>
 
         <Container background={'secondary'} padding margin br={5}>
@@ -186,9 +207,11 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Passport Image</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Passport Image
+          </Text>
         </Container>
-        <TakeAPicture defaultImage={defaultUrl} />
+        <TakeAPicture defaultImage={defaultUrl} assetID={handleAssetId} />
         <Container alignItems={'center'}>
           <Container w={370} marginBottom>
             <Button
@@ -197,6 +220,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
               type={Constants.BrandOptions.Primary}
               buttonText={'Create Credential'}
               onPress={signVc}
+              disabled={assetId === ''}
             />
           </Container>
         </Container>

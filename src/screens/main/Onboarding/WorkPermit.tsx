@@ -18,6 +18,7 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
   const defaultUrl =
     'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
   const did = navigation.getParam('did')
+  const [assetId, setAssetId] = useState('')
   const [documentType, setDocumentType] = useState('Work Permit')
   const [firstName, setFirstName] = useState()
   const [middleName, setMiddleName] = useState()
@@ -39,6 +40,7 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
     nationality,
     employer,
     documentNumber,
+    assetId,
   }
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
@@ -60,6 +62,10 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
     },
   })
 
+  const handleAssetId = (id: string) => {
+    setAssetId(id)
+  }
+
   const signVc = () => {
     actionSignVc({
       variables: {
@@ -79,10 +85,15 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
           <Text textStyle={styles.title}> Add Work Permit </Text>
         </Container>
         <Container margin>
-          <Text textStyle={styles.baseText}> Document Type: {documentType} </Text>
+          <Text textStyle={styles.baseText}>
+            {' '}
+            Document Type: {documentType}{' '}
+          </Text>
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>First name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            First name
+          </Text>
         </Container>
         <Container background={'secondary'} margin padding br={5}>
           <TextInput
@@ -95,7 +106,9 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Middle name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Middle name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -108,7 +121,9 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Last name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Last name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -121,7 +136,9 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Date Of Birth</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Date Of Birth
+          </Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -133,7 +150,9 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Date Of Expiry</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Date Of Expiry
+          </Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -145,7 +164,9 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Nationality</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Nationality
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <RNPickerSelect
@@ -155,7 +176,9 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Employer</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Employer
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -168,7 +191,9 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Permit Number</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Permit Number
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -181,9 +206,11 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Work Permit Image</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Work Permit Image
+          </Text>
         </Container>
-        <TakeAPicture defaultImage={defaultUrl} documentType={documentType} />
+        <TakeAPicture defaultImage={defaultUrl} assetID={handleAssetId} />
         <Container alignItems={'center'}>
           <Container w={370} marginBottom>
             <Button
@@ -192,6 +219,7 @@ const WorkPermit: React.FC<Props> = ({ navigation }) => {
               type={Constants.BrandOptions.Primary}
               buttonText={'Create Credential'}
               onPress={signVc}
+              disabled={assetId === ''}
             />
           </Container>
         </Container>
@@ -212,7 +240,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: 'bold',
-    color: '#e07b39'
+    color: '#e07b39',
   },
 })
 

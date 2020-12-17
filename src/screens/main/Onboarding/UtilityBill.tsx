@@ -19,6 +19,7 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
   const defaultUrl =
     'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
   const did = navigation.getParam('did')
+  const [assetId, setAssetId] = useState('')
   const [documentType, setDocumentType] = useState('Utility Bill')
   const [firstName, setFirstName] = useState()
   const [middleName, setMiddleName] = useState()
@@ -46,6 +47,7 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
     postalCode,
     utilityCompanyName,
     documentNumber,
+    assetId,
   }
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
@@ -66,6 +68,9 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
       }
     },
   })
+  const handleAssetId = (id: string) => {
+    setAssetId(id)
+  }
 
   const signVc = () => {
     actionSignVc({
@@ -86,10 +91,15 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
           <Text textStyle={styles.title}> Add Utility Bill </Text>
         </Container>
         <Container margin>
-          <Text textStyle={styles.baseText}> Document Type: {documentType} </Text>
+          <Text textStyle={styles.baseText}>
+            {' '}
+            Document Type: {documentType}{' '}
+          </Text>
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>First name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            First name
+          </Text>
         </Container>
         <Container background={'secondary'} margin padding br={5}>
           <TextInput
@@ -102,7 +112,9 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Middle name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Middle name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -115,7 +127,9 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Last name</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Last name
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -128,7 +142,9 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Date Of Bill Uploaded</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Date Of Bill Uploaded
+          </Text>
         </Container>
         <Container paddingLeft={15} br={5}>
           <DatePicker
@@ -155,7 +171,9 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Address</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Address
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -168,7 +186,9 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Parish</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Parish
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <RNPickerSelect
@@ -178,7 +198,9 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Country</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Country
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <RNPickerSelect
@@ -188,7 +210,9 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Postal Code</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Postal Code
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -218,7 +242,9 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Account Number</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Account Number
+          </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <TextInput
@@ -231,9 +257,11 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
           />
         </Container>
         <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>Utility Bill Image</Text>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            Utility Bill Image
+          </Text>
         </Container>
-        <TakeAPicture defaultImage={defaultUrl} />
+        <TakeAPicture defaultImage={defaultUrl} assetID={handleAssetId} />
         <Container alignItems={'center'}>
           <Container w={370} marginBottom>
             <Button
@@ -242,6 +270,7 @@ const UtilityBill: React.FC<Props> = ({ navigation }) => {
               type={Constants.BrandOptions.Primary}
               buttonText={'Create Credential'}
               onPress={signVc}
+              disabled={assetId === ''}
             />
           </Container>
         </Container>
