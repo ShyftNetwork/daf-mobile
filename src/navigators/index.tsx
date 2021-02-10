@@ -67,6 +67,7 @@ import PerseidProfile from '../screens/main/PerseidProfile'
 import PerseidDocuments from '../screens/main/PerseidDocuments'
 
 import { Animated, Easing } from 'react-native'
+import Login from '../screens/main/Login'
 
 const headerLogo = () => (
   <View style={styles.container}>
@@ -312,7 +313,7 @@ const TabNavigator = createBottomTabNavigator(
       screen: ActivityNavigator,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => {
-          return <Icon icon={Icons.HEART} color={tintColor} />
+          return <Icon icon={Icons.HOME} color={tintColor} />
         },
       },
     },
@@ -450,6 +451,13 @@ const Onboard = createStackNavigator(
     },
     CreateProfile: {
       screen: CreateProfile,
+      navigationOptions: {
+        headerTitle: headerLogo,
+        headerStyle: { borderBottomWidth: 0 },
+      },
+    },
+    PerseidLogin: {
+      screen: Login,
       navigationOptions: {
         headerTitle: headerLogo,
         headerStyle: { borderBottomWidth: 0 },

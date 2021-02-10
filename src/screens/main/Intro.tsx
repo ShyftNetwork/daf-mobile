@@ -42,12 +42,21 @@ const Intro: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
             backgroundColor={Colors.WHITE}
           >
             <Container alignItems={'center'}>
+              <Container margin={10} w={300}>
+                <Button
+                  fullWidth
+                  block={Constants.ButtonBlocks.Outlined}
+                  type={Constants.BrandOptions.Primary}
+                  buttonText={'Login'}
+                  onPress={() => navigation.navigate('PerseidLogin')}
+                />
+              </Container>
               <Container w={300}>
                 <Button
                   fullWidth
                   block={Constants.ButtonBlocks.Outlined}
                   type={Constants.BrandOptions.Primary}
-                  buttonText={'Get Started'}
+                  buttonText={'New user'}
                   onPress={() => navigation.navigate('CreateProfile')}
                 />
               </Container>

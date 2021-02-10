@@ -4,6 +4,7 @@ const OnboardingScreens = {
   CreatingWallet: { screen: 'CreatingWallet', title: 'Creating Wallet' },
   Onboarding: { screen: 'Onboarding', title: 'Onboarding' },
   CreateProfile: { screen: 'CreateProfile', title: 'Create New Profile' },
+  PerseidLogin: { screen: 'PerseidLogin', title: 'Perseid Login' },
 }
 
 const MainScreens = {
