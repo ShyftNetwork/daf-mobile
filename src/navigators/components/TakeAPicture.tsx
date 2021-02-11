@@ -8,10 +8,12 @@ import { v4 as uuidv4 } from 'uuid'
 interface TakeAPictureProps {
   defaultImage: string
   assetID: any
+  asset: any
 }
 const TakeAPicture: React.FC<TakeAPictureProps> = ({
   defaultImage,
   assetID,
+  asset,
 }) => {
   const [image, setNewImage] = useState(defaultImage)
   const baseUrl = 'https://testnet.burstiq.com/api/burstchain/'
@@ -29,6 +31,7 @@ const TakeAPicture: React.FC<TakeAPictureProps> = ({
       includeBase64: true,
     }).then(image => {
       setNewImage(image.path)
+      asset(image.path)
       uploadImage(image)
     })
   }
@@ -39,6 +42,7 @@ const TakeAPicture: React.FC<TakeAPictureProps> = ({
       includeBase64: true,
     }).then(image => {
       setNewImage(image.path)
+      asset(image.path)
       uploadImage(image)
     })
   }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { StyleSheet, TextInput, ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Screen, Container, Button, Constants, Text } from '@kancha/kancha-ui'
@@ -6,12 +6,12 @@ import { NavigationStackProp } from 'react-navigation-stack'
 import DatePicker from 'react-native-date-picker'
 import RNPickerSelect from 'react-native-picker-select'
 import CountryList from './CountryList'
-import ParishList from './ParishList'
+import StateList from './StateList'
 
 type Props = {
   navigation: NavigationStackProp
 }
-
+let stateList = [{ label: '', value: '' }]
 const CreateProfile: React.FC<Props> = ({ navigation }) => {
   const [firstName, setFirstName] = useState()
   const [middleName, setMiddleName] = useState()
@@ -19,8 +19,8 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
   const [alias, setAlias] = useState()
   const [dateOfBirth, setDateOfBirth] = useState(new Date())
   const [address, setAddress] = useState()
-  const [parish, setParish] = useState()
   const [country, setCountry] = useState()
+  const [state, setStateName] = useState()
   const [postalCode, setPostalCode] = useState()
   const [email, setEmail] = useState()
 
@@ -32,11 +32,18 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
       alias,
       dateOfBirth,
       address,
-      parish,
       country,
+      state,
       postalCode,
       email,
     })
+  }
+  const setStateList = val => {
+    setCountry(val)
+    stateList = StateList.filter(state => {
+      return val === state.country_code
+    })
+    return stateList
   }
   return (
     <Screen background={'primary'}>
@@ -136,26 +143,26 @@ const CreateProfile: React.FC<Props> = ({ navigation }) => {
         </Container>
         <Container paddingHorizontal marginTop>
           <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
-            Parish
-          </Text>
-        </Container>
-        <Container background={'secondary'} padding margin br={5}>
-          <RNPickerSelect
-            style={styles.whiteBackground}
-            onValueChange={value => setParish(value)}
-            items={ParishList}
-          />
-        </Container>
-        <Container paddingHorizontal marginTop>
-          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
             Country
           </Text>
         </Container>
         <Container background={'secondary'} padding margin br={5}>
           <RNPickerSelect
             style={styles.whiteBackground}
-            onValueChange={value => setCountry(value)}
+            onValueChange={val => setStateList(val)}
             items={CountryList}
+          />
+        </Container>
+        <Container paddingHorizontal marginTop>
+          <Text textStyle={styles.baseText} type={Constants.TextTypes.Body}>
+            State
+          </Text>
+        </Container>
+        <Container background={'secondary'} padding margin br={5}>
+          <RNPickerSelect
+            style={styles.whiteBackground}
+            onValueChange={value => setStateName(value)}
+            items={stateList}
           />
         </Container>
         <Container paddingHorizontal marginTop>
