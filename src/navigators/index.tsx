@@ -34,6 +34,7 @@ import Requests from '../screens/main/Requests/Requests'
 import Credential from '../screens/main/Credential'
 import CreatingWallet from '../screens/main/CreateIdentity'
 import CreateFirstCredential from '../screens/main/CreateFirstCredential'
+import GetDocumentImage from '../screens/main/GetDocumentImage'
 import IssueCredentialScreen from '../screens/main/IssueCredential'
 
 // Settings
@@ -416,6 +417,16 @@ const CredentialDetail = createStackNavigator({
   SettingsDetail: Settings,
 })
 
+const ShowDocumentImage = createStackNavigator({
+  DocumentImage: {
+    screen: GetDocumentImage,
+    navigationOptions: {
+      headerStyle: { borderBottomWidth: 0 },
+    },
+  },
+  SettingsDetail: Settings,
+})
+
 const App = createStackNavigator(
   {
     Tabs: TabNavigator,
@@ -425,6 +436,7 @@ const App = createStackNavigator(
     IssueFirstCredential,
     IssueCredential,
     CredentialDetail,
+    ShowDocumentImage,
   },
   {
     mode: 'modal',

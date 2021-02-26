@@ -16,11 +16,12 @@ const TakeAPicture: React.FC<TakeAPictureProps> = ({
   asset,
 }) => {
   const [image, setNewImage] = useState(defaultImage)
+  const [errorText, setErrorText] = useState('')
   const baseUrl = 'https://testnet.burstiq.com/api/burstchain/'
   const headers = new Headers()
   headers.append(
     'Authorization',
-    'Basic ' + base64.encode('perseid_burstiq@shyft.network:YI&Y61Z2@C3g'),
+    'Basic ' + base64.encode('perseid_burstiq@shyft.network:9w4OP6Z9xk6%'),
   )
   headers.append('Content-Type', 'application/json')
 
@@ -31,7 +32,6 @@ const TakeAPicture: React.FC<TakeAPictureProps> = ({
       includeBase64: true,
     }).then(image => {
       setNewImage(image.path)
-      asset(image.path)
       uploadImage(image)
     })
   }
@@ -42,7 +42,6 @@ const TakeAPicture: React.FC<TakeAPictureProps> = ({
       includeBase64: true,
     }).then(image => {
       setNewImage(image.path)
-      asset(image.path)
       uploadImage(image)
     })
   }
@@ -88,7 +87,8 @@ const TakeAPicture: React.FC<TakeAPictureProps> = ({
     }
     const uploadAsset = await fetch(uploadImageUrl, options)
     const response = await uploadAsset.json()
-    assetID(response.asset_id)
+    if (response.asset_id) assetID(response.asset_id)
+    else setErrorText('There is an issue uploading image on the blockchain')
   }
   return (
     <>
@@ -100,6 +100,9 @@ const TakeAPicture: React.FC<TakeAPictureProps> = ({
         />
       </View>
       <View style={styles.viewContainer}>
+        <Container w={370} marginBottom>
+          <Text textStyle={{ color: 'red' }}>{errorText}</Text>
+        </Container>
         <Container w={370} marginBottom>
           <Button
             fullWidth

@@ -22,6 +22,10 @@ const MainScreens = {
     screen: 'CreateFirstCredential',
     title: 'Create First Credential',
   },
+  GetDocumentImage: {
+    screen: 'GetDocumentImage',
+    title: 'Document Image',
+  },
   Credential: { screen: 'Credential', title: 'Credential' },
 }
 
