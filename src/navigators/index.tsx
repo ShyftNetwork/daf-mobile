@@ -34,6 +34,7 @@ import Requests from '../screens/main/Requests/Requests'
 import Credential from '../screens/main/Credential'
 import CreatingWallet from '../screens/main/CreateIdentity'
 import CreateFirstCredential from '../screens/main/CreateFirstCredential'
+import GetDocumentImage from '../screens/main/GetDocumentImage'
 import IssueCredentialScreen from '../screens/main/IssueCredential'
 
 // Settings
@@ -67,6 +68,7 @@ import PerseidProfile from '../screens/main/PerseidProfile'
 import PerseidDocuments from '../screens/main/PerseidDocuments'
 
 import { Animated, Easing } from 'react-native'
+import Login from '../screens/main/Login'
 
 const headerLogo = () => (
   <View style={styles.container}>
@@ -312,7 +314,7 @@ const TabNavigator = createBottomTabNavigator(
       screen: ActivityNavigator,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => {
-          return <Icon icon={Icons.HEART} color={tintColor} />
+          return <Icon icon={Icons.HOME} color={tintColor} />
         },
       },
     },
@@ -415,6 +417,16 @@ const CredentialDetail = createStackNavigator({
   SettingsDetail: Settings,
 })
 
+const ShowDocumentImage = createStackNavigator({
+  DocumentImage: {
+    screen: GetDocumentImage,
+    navigationOptions: {
+      headerStyle: { borderBottomWidth: 0 },
+    },
+  },
+  SettingsDetail: Settings,
+})
+
 const App = createStackNavigator(
   {
     Tabs: TabNavigator,
@@ -424,6 +436,7 @@ const App = createStackNavigator(
     IssueFirstCredential,
     IssueCredential,
     CredentialDetail,
+    ShowDocumentImage,
   },
   {
     mode: 'modal',
@@ -450,6 +463,13 @@ const Onboard = createStackNavigator(
     },
     CreateProfile: {
       screen: CreateProfile,
+      navigationOptions: {
+        headerTitle: headerLogo,
+        headerStyle: { borderBottomWidth: 0 },
+      },
+    },
+    PerseidLogin: {
+      screen: Login,
       navigationOptions: {
         headerTitle: headerLogo,
         headerStyle: { borderBottomWidth: 0 },

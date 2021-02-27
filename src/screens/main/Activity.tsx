@@ -51,6 +51,13 @@ const Activity: React.FC<Props> = ({ navigation }) => {
     })
   }
 
+  const showDocumentImage = (assetId: String) => {
+    navigation.navigate('ShowDocumentImage', {
+      assetId: assetId,
+      fetchMessages: refetchAllMessages,
+    })
+  }
+
   const viewAttachments = (credentials: any[], credentialIndex: number) => {
     navigation.navigate('CredentialDetail', {
       credentials,
@@ -130,6 +137,17 @@ const Activity: React.FC<Props> = ({ navigation }) => {
                         issuer={credential.issuer}
                         shadow={1.5}
                         background={'primary'}
+                      />
+                      <Button
+                        fullWidth
+                        buttonText={'View Document Image'}
+                        onPress={() =>
+                          showDocumentImage(
+                            credential.credentialSubject.assetId,
+                          )
+                        } //credential.credentialSubject.assetId
+                        type={Constants.BrandOptions.Primary}
+                        block={Constants.ButtonBlocks.Outlined}
                       />
                     </Container>
                   )}

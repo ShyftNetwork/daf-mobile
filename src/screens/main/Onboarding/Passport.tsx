@@ -15,6 +15,7 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
     'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
   const did = navigation.getParam('did')
   const [assetId, setAssetId] = useState('')
+  const [asset, setAsset] = useState('')
   const fetchMessages = navigation.getParam('fetchMessages')
   const [firstName, setFirstName] = useState()
   const [documentType, setDocumentType] = useState('Passport')
@@ -67,6 +68,9 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   })
   const handleAssetId = (id: string) => {
     setAssetId(id)
+  }
+  const handleAsset = (asset: string) => {
+    setAsset(asset)
   }
   const signVc = () => {
     actionSignVc({
@@ -211,7 +215,11 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
             Passport Image
           </Text>
         </Container>
-        <TakeAPicture defaultImage={defaultUrl} assetID={handleAssetId} />
+        <TakeAPicture
+          defaultImage={defaultUrl}
+          assetID={handleAssetId}
+          asset={handleAsset}
+        />
         <Container alignItems={'center'}>
           <Container w={370} marginBottom>
             <Button

@@ -12,16 +12,7 @@ import {
 } from '@kancha/kancha-ui'
 import { NavigationStackScreenProps } from 'react-navigation-stack'
 import { Colors } from '../../theme'
-import {
-  StyleSheet,
-  TextInput,
-  View,
-  Image,
-  ImageBackground,
-  TouchableOpacity,
-  Route,
-  Redirect,
-} from 'react-native'
+import { StyleSheet, TextInput, View } from 'react-native'
 import { useQuery } from 'react-apollo'
 import { GET_MESSAGE, GET_VIEWER } from '../../lib/graphql/queries'
 import { ActivityIndicator } from 'react-native'
@@ -83,6 +74,7 @@ const Login: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
       alignItems: 'center',
       justifyContent: 'center',
       margin: 15,
+      marginBottom: 15,
     },
     container: {
       paddingTop: 23,
@@ -142,18 +134,6 @@ const Login: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
     // }
   }
 
-  const newUser = () => {
-    console.log('newUser')
-    navigation.navigate('CreateProfile')
-    // if (email === '' || pass === '') {
-    //   alert('Please enter valid credentials')
-    // } else {
-    //   //perform graphql login query to Perseid System
-    //   //then forward to Intro.tsx
-    //   //navigation.navigate('App')
-    // }
-  }
-
   const hasNoIdentityAndNotLoading =
     !loading && (!data || (data && data.viewer === null))
   // const hasNoIdentityAndNotLoading = true;//!loading && data && data.viewer === null
@@ -179,18 +159,6 @@ const Login: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
                   buttonText={'Login'}
                   //onPress={() => navigation.navigate('Onboarding')}
                   onPress={() => login(state.email, state.password)}
-                />
-              </Container>
-            </Container>
-            <Container alignItems={'center'}>
-              <Container w={300}>
-                <Button
-                  fullWidth
-                  block={Constants.ButtonBlocks.Outlined}
-                  type={Constants.BrandOptions.Primary}
-                  buttonText={'New User'}
-                  //onPress={() => navigation.navigate('Onboarding')}
-                  onPress={() => newUser()}
                 />
               </Container>
             </Container>
