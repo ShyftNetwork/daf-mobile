@@ -141,8 +141,8 @@ android {
         applicationId "com.perseidmobile"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 22
-        versionName "1.0.1"
+        versionCode 23
+        versionName "1.0.3"
         missingDimensionStrategy 'react-native-camera', 'general'
     }
 
