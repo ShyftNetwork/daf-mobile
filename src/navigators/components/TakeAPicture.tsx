@@ -8,12 +8,10 @@ import { v4 as uuidv4 } from 'uuid'
 interface TakeAPictureProps {
   defaultImage: string
   assetID: any
-  asset: any
 }
 const TakeAPicture: React.FC<TakeAPictureProps> = ({
   defaultImage,
   assetID,
-  asset,
 }) => {
   const [image, setNewImage] = useState(defaultImage)
   const [errorText, setErrorText] = useState('')
