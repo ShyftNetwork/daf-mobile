@@ -10,7 +10,7 @@ const GetDocumentImage: React.FC<NavigationStackScreenProps> & {
 } = ({ navigation }) => {
   const defaultUrl =
     'https://iran.1stquest.com/blog/wp-content/uploads/2019/10/Passport-1.jpg'
-  const assetId = '82644f2f-14a1-4fc3-9189-a7da9c942010' // navigation.getParam('assetId')
+  const assetId = navigation.getParam('assetId')
   const fetchMessages = navigation.getParam('fetchMessages')
   const [image, setImage] = useState(defaultUrl)
   const [errorText, setErrorText] = useState('')
@@ -30,8 +30,8 @@ const GetDocumentImage: React.FC<NavigationStackScreenProps> & {
         headers,
       }
       try {
-        const uploadAsset = await fetch(uploadImageUrl, options)
-        const response = await uploadAsset.json()
+        const fetchAsset = await fetch(uploadImageUrl, options)
+        const response = await fetchAsset.json();
         setImage(response.asset_metadata.data)
       } catch (err) {
         setErrorText('There has been a problem fetching your document image')

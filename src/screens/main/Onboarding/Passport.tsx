@@ -29,8 +29,9 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
 
   const [handleMessage] = useMutation(NEW_MESSAGE, {
     onCompleted: () => {
-      fetchMessages()
-      navigation.dismiss()
+      // fetchMessages()
+      // navigation.dismiss()
+      navigation.navigate('Activity')
     },
   })
 
@@ -68,9 +69,6 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   })
   const handleAssetId = (id: string) => {
     setAssetId(id)
-  }
-  const handleAsset = (asset: string) => {
-    setAsset(asset)
   }
   const signVc = () => {
     actionSignVc({
@@ -218,7 +216,6 @@ const Passport: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
         <TakeAPicture
           defaultImage={defaultUrl}
           assetID={handleAssetId}
-          asset={handleAsset}
         />
         <Container alignItems={'center'}>
           <Container w={370} marginBottom>
