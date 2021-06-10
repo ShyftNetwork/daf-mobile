@@ -407,7 +407,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 82SAVLYZ3K;
+						DevelopmentTeam = 8FWH5LFH52;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -844,25 +844,27 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DafMobile/DafMobile.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 82SAVLYZ3K;
+				DEVELOPMENT_TEAM = 8FWH5LFH52;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = DafMobile/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
 				INFOPLIST_PREFIX_HEADER = "${BUILD_DIR}/GeneratedInfoPlistDotEnv.h";
 				INFOPLIST_PREPROCESS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.7;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.serto.wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = co.perseid.wallet;
 				PRODUCT_NAME = DafMobile;
-				PROVISIONING_PROFILE_SPECIFIER = "match Development co.serto.wallet";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				USER_HEADER_SEARCH_PATHS = "${PODS_ROOT}/EthCore ${PODS_ROOT}/EthCore/openssl/include";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -876,22 +878,24 @@
 				CODE_SIGN_ENTITLEMENTS = DafMobile/DafMobile.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 82SAVLYZ3K;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = 8FWH5LFH52;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = DafMobile/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
 				INFOPLIST_PREFIX_HEADER = "${BUILD_DIR}/GeneratedInfoPlistDotEnv.h";
 				INFOPLIST_PREPROCESS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.7;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.serto.wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = co.perseid.wallet;
 				PRODUCT_NAME = DafMobile;
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore co.serto.wallet";
+				PROVISIONING_PROFILE_SPECIFIER = "Perseid Distribution";
 				USER_HEADER_SEARCH_PATHS = "${PODS_ROOT}/EthCore ${PODS_ROOT}/EthCore/openssl/include";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1071,7 +1075,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1117,7 +1121,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

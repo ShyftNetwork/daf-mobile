@@ -196,6 +196,8 @@ PODS:
     - React
   - react-native-date-picker (3.2.4):
     - React-Core
+  - react-native-image-base64 (0.1.4):
+    - React
   - react-native-randombytes (3.5.3):
     - React
   - react-native-sodium (0.3.6):
@@ -237,9 +239,9 @@ PODS:
     - React-cxxreact (= 0.61.1)
     - React-jsi (= 0.61.1)
     - ReactCommon/jscallinvoker (= 0.61.1)
-  - RNAnalytics (1.1.0-beta.2):
+  - RNAnalytics (1.4.8):
     - Analytics
-    - React
+    - React-Core
   - RNCAsyncStorage (1.8.0):
     - React
   - RNCPicker (1.8.1):
@@ -304,6 +306,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-camera (from `../node_modules/react-native-camera`)
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
+  - react-native-image-base64 (from `../node_modules/react-native-image-base64`)
   - react-native-randombytes (from `../node_modules/react-native-randombytes`)
   - react-native-sodium (from `../node_modules/react-native-sodium`)
   - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
@@ -335,16 +338,15 @@ DEPENDENCIES:
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - Analytics
     - boost-for-react-native
     - EthCore
     - ISO8601DateFormatter
     - Sentry
+    - TOCropViewController
     - UPTEthereumSigner
     - Valet
-  trunk:
-    - TOCropViewController
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -379,6 +381,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-camera"
   react-native-date-picker:
     :path: "../node_modules/react-native-date-picker"
+  react-native-image-base64:
+    :path: "../node_modules/react-native-image-base64"
   react-native-randombytes:
     :path: "../node_modules/react-native-randombytes"
   react-native-sodium:
@@ -457,6 +461,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 574d597112f9ea3d1b717f6fb62aef764c70dd6f
   react-native-camera: b6a6a61bcdbd619c19df3df581fcb009131938bf
   react-native-date-picker: b2f2dd2144c2f7b052ef120bca483ca43fa92a7a
+  react-native-image-base64: 2ff9ac788639c87a91361ab6652cc95e871b1e54
   react-native-randombytes: 3638d24759d67c68f6ccba60c52a7a8a8faa6a23
   react-native-sodium: c7587732667e1cdb7d0d77c2aa2e98420aad2036
   react-native-sqlite-storage: c7d77c26a0b82a304d7158d3515f188665e3ef72
@@ -470,7 +475,7 @@ SPEC CHECKSUMS:
   React-RCTText: 81b62b4e7f11531a5154e4daa5617670d5a2d5de
   React-RCTVibration: 8be61459e3749d1fb02cf414edd05b3007622882
   ReactCommon: 4fba5be89efdf0b5720e0adb3d8d7edf6e532db0
-  RNAnalytics: 67854ebc95a440c6d522babd84cf1968c8629947
+  RNAnalytics: 6dd7878949062f49add396def34a2203d22d48f4
   RNCAsyncStorage: 5d83b49070d41fd72906a116c5e7bdac4ea3a814
   RNCPicker: 914b557e20b3b8317b084aca9ff4b4edb95f61e4
   RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
@@ -490,6 +495,6 @@ SPEC CHECKSUMS:
   Valet: 14463ef24fab8fd5809044ecedb61484b799fdd6
   Yoga: d8c572ddec8d05b7dba08e4e5f1924004a177078
 
-PODFILE CHECKSUM: ee43cfa7c5b944272ffb9e325f33e25851574dd6
+PODFILE CHECKSUM: 0504ae5e2f3ed5aaf0c2335151ed1fcfcacf059f
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1
