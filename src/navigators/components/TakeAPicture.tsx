@@ -19,7 +19,7 @@ const TakeAPicture: React.FC<TakeAPictureProps> = ({
   const headers = new Headers()
   headers.append(
     'Authorization',
-    'Basic ' + base64.encode('perseid_burstiq@shyft.network:9w4OP6Z9xk6%'),
+    'Basic ' + base64.encode('perseid_burstiq@shyft.network:8cFv8t@Y*Kun'),
   )
   headers.append('Content-Type', 'application/json')
 
@@ -85,6 +85,7 @@ const TakeAPicture: React.FC<TakeAPictureProps> = ({
     }
     const uploadAsset = await fetch(uploadImageUrl, options)
     const response = await uploadAsset.json()
+    console.log('response', response)
     if (response.asset_id) assetID(response.asset_id)
     else setErrorText('There is an issue uploading image on the blockchain')
   }

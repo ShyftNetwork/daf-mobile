@@ -20,7 +20,7 @@ const GetDocumentImage: React.FC<NavigationStackScreenProps> & {
     const headers = new Headers()
     headers.append(
       'Authorization',
-      'Basic ' + base64.encode('perseid_burstiq@shyft.network:9w4OP6Z9xk6%'),
+      'Basic ' + base64.encode('perseid_burstiq@shyft.network:8cFv8t@Y*Kun'),
     )
     headers.append('Content-Type', 'application/json')
     const getAsset = async (assetId: String) => {
@@ -31,7 +31,7 @@ const GetDocumentImage: React.FC<NavigationStackScreenProps> & {
       }
       try {
         const fetchAsset = await fetch(uploadImageUrl, options)
-        const response = await fetchAsset.json();
+        const response = await fetchAsset.json()
         setImage(response.asset_metadata.data)
       } catch (err) {
         setErrorText('There has been a problem fetching your document image')
